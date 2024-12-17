@@ -1,59 +1,130 @@
 [project]
-name = "SimBio"
+name = "simbio"
+description = "A Python-based package for simulation of Chemical Reaction Networks (CRNs)."
+version = "0.4.0"
 authors = [
-    { name="Hernán E. Grecco", email="hernan.grecco@gmail.com" },
-    { name="Mauro Silberberg", email="maurosilber@gmail.com" },
+  { name = "Hernán E. Grecco", email = "hernan.grecco@gmail.com" },
+  { name = "Mauro Silberberg", email = "maurosilber@gmail.com" },
 ]
-description = "Simulation of Biological Systems"
-keywords = [
-"mass action",
-"michaelis menten",
-"ode",
-"compartment",
-"reaction",
-"SBML",
-"poincare",
-]
-license = { file="LICENSE" }
+readme = { file = "README.md", content-type = "text/markdown" }
+license = "MIT"
 classifiers = [
-    "Intended Audience :: Developers",
-    "Intended Audience :: Science/Research",
-    "Topic :: Scientific/Engineering",
-    "Topic :: Software Development :: Libraries",
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: BSD License",
-    "Operating System :: OS Independent",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Software Development :: Libraries",
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
 ]
-dynamic = ["dependencies", "optional-dependencies", "version"]
+keywords = [
+  "mass action",
+  "michaelis menten",
+  "ode",
+  "compartment",
+  "reaction",
+  "SBML",
+  "poincare",
+]
 requires-python = ">=3.10"
-
-[project.readme]
-file = "README.md"
-content-type = "text/markdown"
+dependencies = ["poincare >= 0.3.1"]
 
 [project.urls]
-"Homepage" = "https://github.com/hgrecco/simbio"
-"Bug Tracker" = "https://github.com/hgrecco/simbio/issues"
+homepage = "https://github.com/hgrecco/simbio"
+issues = "https://github.com/hgrecco/simbio/issues"
+changelog = "https://github.com/hgrecco/simbio/blob/main/CHANGELOG.md"
+documentation = "https://hgrecco.github.io/simbio"
+
+[project.optional-dependencies]
+io = ["biomodels", "python-libsbml"]
 
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
-
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.setuptools.dynamic]
-dependencies = {file = "requirements.txt"}
-optional-dependencies.io = {file = "requirements.io.txt"}
-optional-dependencies.test = {file = "requirements.test.txt"}
-optional-dependencies.docs = {file = "requirements.docs.txt"}
-
-[tool.setuptools_scm]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.pytest.ini_options]
-addopts = "--import-mode=importlib"
-pythonpath = "."
+addopts = ["--import-mode=importlib"]
 
-[tool.ruff]
-select = ["E", "F", "I"]
-ignore = ["E501"]
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[tool.pyright]
+typeCheckingMode = "standard"
+venv = "test"
+venvPath = ".pixi/envs/"
+
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ['linux-64', "osx-arm64"]
+
+[tool.pixi.tasks]
+release = "git tag $(pixi project version get) && git push && git push --tags || echo 'Run: pixi project version <major|minor|update>'"
+
+[tool.pixi.dependencies]
+python = ">=3.10"
+poincare = "*"
+
+[tool.pixi.environments]
+lint = { features = ["lint"], no-default-feature = true }
+build = { features = ["build"], no-default-feature = true }
+test = { features = ["test", "io"], solve-group = "default" }
+test-py310 = ["test", "io", "py310"]
+test-py311 = ["test", "io", "py311"]
+test-py312 = ["test", "io", "py312"]
+test-py313 = ["test", "io", "py313"]
+
+[tool.pixi.feature.lint.dependencies]
+pre-commit = "*"
+pre-commit-hooks = "*"
+taplo = "*"
+ruff = "*"
+mdformat = "*"
+mdformat-ruff = "*"
+pyright = "*"
+
+[tool.pixi.feature.lint.tasks]
+pre-commit-install = "pre-commit install"
+lint = "pre-commit run"
+
+[tool.pixi.feature.build.dependencies]
+uv = "*"
+python = "*"
+
+[tool.pixi.feature.build.pypi-dependencies]
+mdremotifier = "*"
+
+[tool.pixi.feature.build.tasks]
+build = { cmd = "uv build", depends-on = ["remotify"] }
+publish = "uv publish"
+remotify = { cmd = [
+  "mdremotifier",
+  "-i",
+  "README.md",
+  "-o",
+  "README.md",
+  "--url-prefix",
+  "https://github.com/maurosilber/simbio/blob/main",
+  "--img-url-prefix",
+  "https://raw.githubusercontent.com/maurosilber/simbio/refs/heads/main/",
+] }
+
+[tool.pixi.feature.test.dependencies]
+pytest = "*"
+pooch = "*"
+
+[tool.pixi.feature.test.tasks]
+test = "pytest --doctest-modules"
+
+[tool.pixi.feature.py310.dependencies]
+python = "3.10.*"
+
+[tool.pixi.feature.py311.dependencies]
+python = "3.11.*"
+
+[tool.pixi.feature.py312.dependencies]
+python = "3.12.*"
+
+[tool.pixi.feature.py313.dependencies]
+python = "3.13.*"

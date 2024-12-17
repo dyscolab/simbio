@@ -1,12 +1,14 @@
-![Package](https://img.shields.io/pypi/v/simbio?label=simbio)
-![CodeStyle](https://img.shields.io/badge/code%20style-black-000000.svg)
-![License](https://img.shields.io/pypi/l/simbio?label=license)
-![PyVersion](https://img.shields.io/pypi/pyversions/simbio?label=python)
-[![CI](https://github.com/hgrecco/simbio/actions/workflows/ci.yml/badge.svg)](https://github.com/hgrecco/simbio/actions/workflows/ci.yml)
+# simbio
 
-# SimBio
+[![Copier Badge][copier-badge]][copier-url]
+[![Pixi Badge][pixi-badge]][pixi-url]
+![License][license-badge]
+[![CI Badge][ci-badge]][ci-url]
+[![conda-forge Badge][conda-forge-badge]][conda-forge-url]
+[![PyPI Badge][pypi-badge]][pypi-url]
+[![Python version Badge][pypi-version-badge]][pypi-version-url]
 
-`simbio` is a Python-based package for simulation of Chemical Reaction Networks (CRNs).
+A Python-based package for simulation of Chemical Reaction Networks (CRNs).
 It extends [`poincare`](https://github.com/maurosilber/poincare),
 a package for modelling dynamical systems,
 to add functionality for CRNs.
@@ -119,24 +121,84 @@ parameters       17  cell, beta, alpha0, alpha, eff, n, KM, tau_mRNA, tau_prot, 
 equations        12  Reaction1, Reaction2, Reaction3, Reaction4, Reaction5, ...
 ```
 
-## Installation
+## Install
 
-It can be installed from [PyPI](https://pypi.org/p/simbio) with `pip`:
+Using [pixi][pixi-url],
+install from PyPI with:
 
-```
-pip install simbio
-```
-
-Or, to additionally install the SBML importer:
-
-```
-pip install simbio[io]
+```sh
+pixi add --pypi simbio
 ```
 
-While `poincaré` is installed automatically as a dependency,
-if you are using conda/mamba,
-you might prefer to install it from conda-forge:
+or install the latest development version from GitHub with:
+
+```sh
+pixi add --pypi simbio@https://github.com/maurosilber/simbio.git
+```
+
+Otherwise,
+use `pip` or your `pip`-compatible package manager:
+
+```sh
+pip install simbio  # from PyPI
+pip install git+https://github.com/maurosilber/simbio.git  # from GitHub
+```
+
+## Development
+
+This project is managed by [pixi][pixi-url].
+You can install it for development using:
+
+```sh
+git clone https://github.com/maurosilber/simbio
+cd simbio
+pixi run pre-commit-install
+```
+
+Pre-commit hooks are used to lint and format the project.
+
+### Testing
+
+Run tests using:
+
+```sh
+pixi run test
+```
+
+### Publishing to PyPI
+
+When a tagged commit is pushed to GitHub,
+the GitHub Action defined in `.github/workflows/ci.yml`
+builds and publishes the package to PyPI.
+
+Tag a commit and push the tags with:
+
+```sh
+git tag <my-tag>
+git push --tags
+```
+
+Trusted publishing must be enabled once in [PyPI Publishing](https://pypi.org/manage/account/publishing/).
+Fill the following values in the form:
 
 ```
-conda install --channel conda-forge poincare
+PyPI Project Name: simbio
+            Owner: maurosilber
+  Repository name: simbio
+    Workflow name: ci.yml
+ Environment name: pypi
 ```
+
+[ci-badge]: https://img.shields.io/github/actions/workflow/status/maurosilber/simbio/ci.yml
+[ci-url]: https://github.com/maurosilber/simbio/actions/workflows/ci.yml
+[conda-forge-badge]: https://img.shields.io/conda/vn/conda-forge/simbio?logoColor=white&logo=conda-forge
+[conda-forge-url]: https://prefix.dev/channels/conda-forge/packages/simbio
+[copier-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-black.json
+[copier-url]: https://github.com/copier-org/copier
+[license-badge]: https://img.shields.io/badge/license-MIT-blue
+[pixi-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json
+[pixi-url]: https://pixi.sh
+[pypi-badge]: https://img.shields.io/pypi/v/simbio.svg?logo=pypi&logoColor=white
+[pypi-url]: https://pypi.org/project/simbio
+[pypi-version-badge]: https://img.shields.io/pypi/pyversions/simbio?logoColor=white&logo=python
+[pypi-version-url]: https://pypi.org/project/simbio

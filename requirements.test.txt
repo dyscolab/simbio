@@ -1,3 +1,0 @@
-pooch
-pytest<8.1
-simbio[io]
