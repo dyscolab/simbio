@@ -285,7 +285,7 @@ class Simulator(_Simulator):
 
     def create_problem(
         self,
-        values: dict[Constant | Parameter | Species, Initial | Symbol] = {},
+        values: Mapping[Constant | Parameter | Species, Initial | Symbol] = {},
         *,
         t_span: tuple[float, float] = (0, np.inf),
     ):
