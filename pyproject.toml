@@ -1,7 +1,7 @@
 [project]
 name = "simbio"
 description = "A Python-based package for simulation of Chemical Reaction Networks (CRNs)."
-version = "0.4.0"
+version = "0.5.0"
 authors = [
   { name = "Hernán E. Grecco", email = "hernan.grecco@gmail.com" },
   { name = "Mauro Silberberg", email = "maurosilber@gmail.com" },
@@ -69,7 +69,7 @@ poincare = "*"
 [tool.pixi.environments]
 lint = { features = ["lint"], no-default-feature = true }
 build = { features = ["build"], no-default-feature = true }
-test = { features = ["test", "io"], solve-group = "default" }
+test = { features = ["test", "io", "rebop"], solve-group = "default" }
 test-py310 = ["test", "io", "py310"]
 test-py311 = ["test", "io", "py311"]
 test-py312 = ["test", "io", "py312"]
@@ -114,6 +114,9 @@ remotify = { cmd = [
 pytest = "*"
 pooch = "*"
 
+[tool.pixi.feature.test.pypi-dependencies]
+simbio = { path = ".", editable = true }
+
 [tool.pixi.feature.test.tasks]
 test = "pytest --doctest-modules"
 
@@ -128,3 +131,12 @@ python = "3.12.*"
 
 [tool.pixi.feature.py313.dependencies]
 python = "3.13.*"
+
+[tool.pixi.feature.rebop.dependencies]
+xarray = ">=2023.01"
+ipykernel = "*"
+matplotlib = "*"
+seaborn = "*"
+
+[tool.pixi.feature.rebop.pypi-dependencies]
+rebop = ">=0.9"
