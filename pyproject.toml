@@ -29,10 +29,10 @@ requires-python = ">=3.10"
 dependencies = ["poincare >= 0.3.1"]
 
 [project.urls]
-homepage = "https://github.com/hgrecco/simbio"
-issues = "https://github.com/hgrecco/simbio/issues"
-changelog = "https://github.com/hgrecco/simbio/blob/main/CHANGELOG.md"
-documentation = "https://hgrecco.github.io/simbio"
+homepage = "https://github.com/dyscolab/simbio"
+issues = "https://github.com/dyscolab/simbio/issues"
+changelog = "https://github.com/dyscolab/simbio/blob/main/CHANGELOG.md"
+documentation = "https://dyscolab.github.io/simbio"
 
 [project.optional-dependencies]
 io = ["biomodels", "python-libsbml"]
@@ -105,9 +105,9 @@ remotify = { cmd = [
   "-o",
   "README.md",
   "--url-prefix",
-  "https://github.com/maurosilber/simbio/blob/main",
+  "https://github.com/dyscolab/simbio/blob/main",
   "--img-url-prefix",
-  "https://raw.githubusercontent.com/maurosilber/simbio/refs/heads/main/",
+  "https://raw.githubusercontent.com/dyscolab/simbio/refs/heads/main/",
 ] }
 
 [tool.pixi.feature.test.dependencies]

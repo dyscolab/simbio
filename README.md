@@ -9,7 +9,7 @@
 [![Python version Badge][pypi-version-badge]][pypi-version-url]
 
 A Python-based package for simulation of Chemical Reaction Networks (CRNs).
-It extends [`poincare`](https://github.com/maurosilber/poincare),
+It extends [`poincare`](https://github.com/dyscolab/poincare),
 a package for modelling dynamical systems,
 to add functionality for CRNs.
 
@@ -89,7 +89,7 @@ time
 ```
 
 For more details into SimBio's capabilities,
-we recommend reading [poincaré's README](https://github.com/maurosilber/poincare).
+we recommend reading [poincaré's README](https://github.com/dyscolab/poincare).
 
 ## SBML
 
@@ -133,7 +133,7 @@ pixi add --pypi simbio
 or install the latest development version from GitHub with:
 
 ```sh
-pixi add --pypi simbio@https://github.com/maurosilber/simbio.git
+pixi add --pypi simbio@https://github.com/dyscolab/simbio.git
 ```
 
 Otherwise,
@@ -141,7 +141,7 @@ use `pip` or your `pip`-compatible package manager:
 
 ```sh
 pip install simbio  # from PyPI
-pip install git+https://github.com/maurosilber/simbio.git  # from GitHub
+pip install git+https://github.com/dyscolab/simbio.git  # from GitHub
 ```
 
 ## Development
@@ -150,7 +150,7 @@ This project is managed by [pixi][pixi-url].
 You can install it for development using:
 
 ```sh
-git clone https://github.com/maurosilber/simbio
+git clone https://github.com/dyscolab/simbio
 cd simbio
 pixi run pre-commit-install
 ```
@@ -189,8 +189,8 @@ PyPI Project Name: simbio
  Environment name: pypi
 ```
 
-[ci-badge]: https://img.shields.io/github/actions/workflow/status/maurosilber/simbio/ci.yml
-[ci-url]: https://github.com/maurosilber/simbio/actions/workflows/ci.yml
+[ci-badge]: https://img.shields.io/github/actions/workflow/status/dyscolab/simbio/ci.yml
+[ci-url]: https://github.com/dyscolab/simbio/actions/workflows/ci.yml
 [conda-forge-badge]: https://img.shields.io/conda/vn/conda-forge/simbio?logoColor=white&logo=conda-forge
 [conda-forge-url]: https://prefix.dev/channels/conda-forge/packages/simbio
 [copier-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-black.json

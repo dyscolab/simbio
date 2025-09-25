@@ -15,7 +15,7 @@ pip install simbio
 or install the latest development version from GitHub:
 
 ```
-pip install git+https://github.com/hgrecco/simbio
+pip install git+https://github.com/dyscolab/simbio
 ```
 
 ## Table of contents
