@@ -21,4 +21,4 @@ test_readme.txt
 
 # Sphinx documentation
 docs/_build/
-docs/**/*.ipynb
+# docs/**/*.ipynb
