@@ -1,9 +1,9 @@
-from symbolite import Symbol
+from symbolite import Real
 
 
-class MathMLSpecialSymbol(Symbol):
+class MathMLSpecialSymbol(Real):
     pass
 
 
-class MathMLSymbol(Symbol):
+class MathMLSymbol(Real):
     pass

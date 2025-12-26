@@ -1,5 +1,5 @@
 from pytest import mark
-from symbolite import scalar
+from symbolite.abstract import real
 
 from . import mathMLImporter, to_mathML
 from .symbol import MathMLSymbol as Symbol
@@ -19,8 +19,8 @@ x, y = map(Symbol, ["x", "y"])
         2 * x + y,
         x**2,
         x**0.5,
-        scalar.cos(x),
-        scalar.sqrt(x),
+        real.cos(x),
+        real.sqrt(x),
         x < 1,
         x < y,
         ~x,

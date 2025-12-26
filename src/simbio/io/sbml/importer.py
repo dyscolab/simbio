@@ -9,9 +9,9 @@ from typing import Callable, Mapping, Sequence, TypeVar
 import libsbml
 import pint
 from poincare.compile import depends_on_at_least_one_variable_or_time
-from symbolite import Symbol
-from symbolite.abstract import symbol
-from symbolite.core import substitute, substitute_by_name
+from symbolite import Real
+from symbolite.abstract import real
+from symbolite import substitute
 
 from ... import (
     Compartment,
@@ -181,7 +181,7 @@ class SBMLImporter:
 
     def get(self, item, default=None):
         match item:
-            case Symbol(name=None):
+            case Real(name=None):
                 return item
             case MathMLSymbol(name=name):
                 return getattr(self.simbio, name)
@@ -272,9 +272,9 @@ class SBMLImporter:
         # s.constant: bool
         species = self.get_symbol(s.species, Species)
         if isinstance(s, types.SpeciesReference) and s.stoichiometry is not None:
-            return Species(species.variable, s.stoichiometry)
+            return Species(species, s.stoichiometry)
         else:
-            return Species(species.variable)
+            return Species(species)
 
     @add.register
     def add_reaction(self, r: types.Reaction):
@@ -297,14 +297,16 @@ class SBMLImporter:
             reactants.append(m)
             products.append(m)
         kinetic_law = r.kinetic_law
-        formula: Symbol = kinetic_law.math
+        formula: Real = kinetic_law.math
         if len(kinetic_law.parameters) > 0:
             mapping = {}
             for p in kinetic_law.parameters:
                 new_id = f"{r.id}__{p.id}"
                 self.add_parameter(replace(p, id=new_id))
                 mapping[p.id] = MathMLSymbol(new_id)
-            formula = substitute_by_name(formula, **mapping)
+            formula = substitute_by_name(
+                formula, **mapping
+            )  # TODO: replace substitute by name
         formula = substitute(formula, GetAsVariable(self.get))
 
         self.simbio.add(
@@ -314,48 +316,48 @@ class SBMLImporter:
         return
 
         # Reversible equations
-        if not r.reversible:
-            self.simbio.add(
-                r.id,
-                RateLaw(reactants=reactants, products=products, rate_law=formula),
-            )
-            return
+        # if not r.reversible:
+        #     self.simbio.add(
+        #         r.id,
+        #         RateLaw(reactants=reactants, products=products, rate_law=formula),
+        #     )
+        #     return
 
-        match formula:
-            case Symbol(
-                expression=symbol.Expression(func=symbol.sub, args=(forward, reverse))
-            ):
-                pass
-            case Symbol(
-                expression=symbol.Expression(
-                    func=symbol.mul,
-                    args=(
-                        compartment,
-                        Symbol(
-                            expression=symbol.Expression(
-                                func=symbol.sub, args=(forward, reverse)
-                            )
-                        ),
-                    )
-                    | (
-                        Symbol(
-                            expression=symbol.Expression(
-                                func=symbol.sub, args=(forward, reverse)
-                            )
-                        ),
-                        compartment,
-                    ),
-                )
-            ):
-                forward = compartment * forward
-                reverse = compartment * reverse
-            case _:
-                # Cannot split formula into forward and reverse
-                self.simbio.add(
-                    r.id,
-                    RateLaw(reactants=reactants, products=products, rate_law=formula),
-                )
-                return
+        # match formula:
+        #     case Symbol(
+        #         expression=symbol.Expression(func=symbol.sub, args=(forward, reverse))
+        #     ):
+        #         pass
+        #     case Symbol(
+        #         expression=symbol.Expression(
+        #             func=symbol.mul,
+        #             args=(
+        #                 compartment,
+        #                 Symbol(
+        #                     expression=symbol.Expression(
+        #                         func=symbol.sub, args=(forward, reverse)
+        #                     )
+        #                 ),
+        #             )
+        #             | (
+        #                 Symbol(
+        #                     expression=symbol.Expression(
+        #                         func=symbol.sub, args=(forward, reverse)
+        #                     )
+        #                 ),
+        #                 compartment,
+        #             ),
+        #         )
+        #     ):
+        #         forward = compartment * forward
+        #         reverse = compartment * reverse
+        #     case _:
+        #         # Cannot split formula into forward and reverse
+        #         self.simbio.add(
+        #             r.id,
+        #             RateLaw(reactants=reactants, products=products, rate_law=formula),
+        #         )
+        #         return
 
     @add.register
     def add_initial_assignment(self, a: types.InitialAssignment):
@@ -363,13 +365,12 @@ class SBMLImporter:
         value = substitute(a.math, GetAsVariable(self.get))
 
         if depends_on_at_least_one_variable_or_time(value):
-            # TODO: this does not check for Species
             raise NotImplementedError("initial conditions must by constant")
 
         if value is None:
             return
         if isinstance(component, Species):
-            component.variable.initial = value
+            component.initial = value
         elif isinstance(component, Constant | Parameter):
             component.default = value
         else:
@@ -394,13 +395,13 @@ class SBMLImporter:
     @add.register
     def add_rate_rule(self, r: types.RateRule):
         species = self.get_symbol(r.variable, Species)
-        value: Symbol = substitute(r.math, GetAsVariable(self.get))
+        value: Real = substitute(r.math, GetAsVariable(self.get))
         if value is None:
             return
         elif isinstance(value, RateLaw):
             raise NotImplementedError("RateRule in AssignmentRule")
         else:
-            eq = species.variable.derive() << value
+            eq = species.derive() << value
 
         name = r.id
         if name is None or name == r.variable:
@@ -426,7 +427,4 @@ class GetAsVariable:
 
     def get(self, key, default=None):
         value = self.getter(key, default=None)
-        if isinstance(value, Species):
-            return value.variable
-        else:
-            return value
+        return value

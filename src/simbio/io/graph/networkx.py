@@ -1,17 +1,16 @@
 from typing import assert_never
 
 from networkx import DiGraph, Graph, bipartite
-from poincare import Variable
 
-from ...core import Compartment, RateLaw
+from ...core import Compartment, RateLaw, Species
 
 
 def graph(model: type[Compartment], /) -> DiGraph:
     """Construct a directed bipartite graph of Species and Reactions."""
     g = DiGraph()
-    for x in model._yield(Variable | RateLaw):  # type: ignore
+    for x in model._yield(Species | RateLaw):  # type: ignore
         match x:
-            case Variable():
+            case Species():
                 g.add_node(x)
             case RateLaw():
                 name = str(x)
@@ -32,7 +31,7 @@ def to_species_graph(graph: DiGraph, /) -> Graph:
     """
     return bipartite.projected_graph(
         graph,
-        nodes=[n for n in graph if isinstance(n, Variable)],
+        nodes=[n for n in graph if isinstance(n, Species)],
     )
 
 
@@ -43,5 +42,5 @@ def to_reaction_graph(graph: DiGraph, /) -> Graph:
     """
     return bipartite.projected_graph(
         graph,
-        nodes=[n for n in graph if not isinstance(n, Variable)],
+        nodes=[n for n in graph if not isinstance(n, Species)],
     )

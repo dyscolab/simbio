@@ -3,27 +3,22 @@ from __future__ import annotations
 from functools import partial, reduce
 from typing import Iterator, Protocol
 
-from symbolite import scalar
-from symbolite.abstract import symbol
+from symbolite.abstract import real
 
 from .symbol import MathMLSpecialSymbol, MathMLSymbol
 
 
 class Element(Protocol):
     @property
-    def tag(self) -> str:
-        ...
+    def tag(self) -> str: ...
 
     @property
-    def attrib(self) -> dict[str, str]:
-        ...
+    def attrib(self) -> dict[str, str]: ...
 
     @property
-    def text(self) -> str:
-        ...
+    def text(self) -> str: ...
 
-    def __iter__(self) -> Iterator[Element]:
-        ...
+    def __iter__(self) -> Iterator[Element]: ...
 
 
 def star_reduce(func, *args):
@@ -40,67 +35,67 @@ tags = {
     "piece": NotImplemented,
     "otherwise": NotImplemented,
     "lambda": NotImplemented,
-    "eq": symbol.eq,
-    "neq": symbol.ne,
-    "gt": symbol.gt,
-    "lt": symbol.lt,
-    "geq": symbol.ge,
-    "leq": symbol.le,
-    "plus": partial(star_reduce, symbol.add),
-    "minus": partial(star_reduce, symbol.sub),
-    "times": partial(star_reduce, symbol.mul),
-    "divide": partial(star_reduce, symbol.truediv),
-    "power": symbol.pow,
+    "eq": real.eq,
+    "neq": real.ne,
+    "gt": real.gt,
+    "lt": real.lt,
+    "geq": real.ge,
+    "leq": real.le,
+    "plus": partial(star_reduce, real.add),
+    "minus": partial(star_reduce, real.sub),
+    "times": partial(star_reduce, real.mul),
+    "divide": partial(star_reduce, real.truediv),
+    "power": real.pow,
     "root": NotImplemented,
-    "abs": scalar.abs,
-    "exp": scalar.exp,
-    "ln": scalar.log,
-    "log": scalar.log10,
-    "floor": scalar.floor,
-    "ceiling": scalar.ceil,
-    "factorial": scalar.factorial,
+    "abs": real.abs,
+    "exp": real.exp,
+    "ln": real.log,
+    "log": real.log10,
+    "floor": real.floor,
+    "ceiling": real.ceil,
+    "factorial": real.factorial,
     "quotient": NotImplemented,
     "max": NotImplemented,
     "min": NotImplemented,
-    "rem": symbol.mod,
-    "and": partial(star_reduce, symbol.and_),
-    "or": partial(star_reduce, symbol.or_),
-    "xor": symbol.xor,
-    "not": symbol.invert,
+    "rem": real.mod,
+    "and": partial(star_reduce, real.and_),
+    "or": partial(star_reduce, real.or_),
+    "xor": real.xor,
+    "not": real.invert,
     "implies": NotImplemented,
     "degree": NotImplemented,
     "bvar": NotImplemented,
     "logbase": NotImplemented,
-    "sin": scalar.sin,
-    "cos": scalar.cos,
-    "tan": scalar.tan,
+    "sin": real.sin,
+    "cos": real.cos,
+    "tan": real.tan,
     "sec": NotImplemented,
     "csc": NotImplemented,
     "cot": NotImplemented,
-    "sinh": scalar.sinh,
-    "cosh": scalar.cosh,
-    "tanh": scalar.tanh,
+    "sinh": real.sinh,
+    "cosh": real.cosh,
+    "tanh": real.tanh,
     "sech": NotImplemented,
     "csch": NotImplemented,
     "coth": NotImplemented,
-    "arcsin": scalar.asin,
-    "arccos": scalar.acos,
-    "arctan": scalar.atan,
+    "arcsin": real.asin,
+    "arccos": real.acos,
+    "arctan": real.atan,
     "arcsec": NotImplemented,
     "arccsc": NotImplemented,
     "arccot": NotImplemented,
-    "arcsinh": scalar.asinh,
-    "arccosh": scalar.acosh,
-    "arctanh": scalar.atanh,
+    "arcsinh": real.asinh,
+    "arccosh": real.acosh,
+    "arctanh": real.atanh,
     "arcsech": NotImplemented,
     "arccsch": NotImplemented,
     "arccoth": NotImplemented,
     "true": True,
     "false": False,
-    "notanumber": scalar.nan,
-    "pi": scalar.pi,
-    "infinity": scalar.inf,
-    "exponentiale": scalar.e,
+    "notanumber": real.nan,
+    "pi": real.pi,
+    "infinity": real.inf,
+    "exponentiale": real.e,
     "semantics": NotImplemented,
     "annotation": NotImplemented,
     "annotation-xml": NotImplemented,
@@ -110,7 +105,7 @@ tags = {
 ns_map = {"http://www.w3.org/1998/Math/MathML": tags}
 
 
-def from_element(element: Element) -> symbol.Symbol:
+def from_element(element: Element) -> Real:
     result = parse(element)
     if isinstance(result, list) and len(result) == 1:
         return result[0]

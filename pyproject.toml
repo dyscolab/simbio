@@ -65,6 +65,7 @@ release = "git tag $(pixi project version get) && git push && git push --tags ||
 [tool.pixi.dependencies]
 python = ">=3.10"
 poincare = "*"
+pytest = ">=9.0.2,<10"
 
 [tool.pixi.environments]
 lint = { features = ["lint"], no-default-feature = true }

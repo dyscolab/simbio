@@ -1,16 +1,17 @@
 from functools import singledispatch as dispatch
 
 import libsbml
-from symbolite import Symbol, scalar
-from symbolite.abstract import symbol
+from symbolite import Real
+from symbolite.abstract import real
+from symbolite.core.symbolite_object import get_symbolite_info
 
 mapper = {
-    symbol.add: libsbml.AST_PLUS,
-    symbol.sub: libsbml.AST_MINUS,
-    symbol.neg: libsbml.AST_MINUS,
-    symbol.mul: libsbml.AST_TIMES,
-    symbol.truediv: libsbml.AST_DIVIDE,
-    symbol.pow: libsbml.AST_POWER,
+    real.add: libsbml.AST_PLUS,
+    real.sub: libsbml.AST_MINUS,
+    real.neg: libsbml.AST_MINUS,
+    real.mul: libsbml.AST_TIMES,
+    real.truediv: libsbml.AST_DIVIDE,
+    real.pow: libsbml.AST_POWER,
     "libsbml.AST_INTEGER": libsbml.AST_INTEGER,
     "libsbml.AST_REAL": libsbml.AST_REAL,
     "libsbml.AST_REAL_E": libsbml.AST_REAL_E,
@@ -18,57 +19,57 @@ mapper = {
     "libsbml.AST_NAME": libsbml.AST_NAME,
     "AST_NAME_AVOGADRO": libsbml.AST_NAME_AVOGADRO,
     "libsbml.AST_NAME_TIME": libsbml.AST_NAME_TIME,
-    scalar.e: libsbml.AST_CONSTANT_E,
+    real.e: libsbml.AST_CONSTANT_E,
     False: libsbml.AST_CONSTANT_FALSE,
-    scalar.pi: libsbml.AST_CONSTANT_PI,
+    real.pi: libsbml.AST_CONSTANT_PI,
     True: libsbml.AST_CONSTANT_TRUE,
     "AST_LAMBDA": libsbml.AST_LAMBDA,
     "AST_FUNCTION": libsbml.AST_FUNCTION,
-    scalar.abs: libsbml.AST_FUNCTION_ABS,
-    scalar.acos: libsbml.AST_FUNCTION_ARCCOS,
-    scalar.acosh: libsbml.AST_FUNCTION_ARCCOSH,
+    real.abs: libsbml.AST_FUNCTION_ABS,
+    real.acos: libsbml.AST_FUNCTION_ARCCOS,
+    real.acosh: libsbml.AST_FUNCTION_ARCCOSH,
     "AST_FUNCTION_ARCCOT": libsbml.AST_FUNCTION_ARCCOT,
     "AST_FUNCTION_ARCCOTH": libsbml.AST_FUNCTION_ARCCOTH,
     "AST_FUNCTION_ARCCSC": libsbml.AST_FUNCTION_ARCCSC,
     "AST_FUNCTION_ARCCSCH": libsbml.AST_FUNCTION_ARCCSCH,
     "AST_FUNCTION_ARCSEC": libsbml.AST_FUNCTION_ARCSEC,
     "AST_FUNCTION_ARCSECH": libsbml.AST_FUNCTION_ARCSECH,
-    scalar.asin: libsbml.AST_FUNCTION_ARCSIN,
-    scalar.asinh: libsbml.AST_FUNCTION_ARCSINH,
-    scalar.atan: libsbml.AST_FUNCTION_ARCTAN,
-    scalar.atanh: libsbml.AST_FUNCTION_ARCTANH,
-    scalar.ceil: libsbml.AST_FUNCTION_CEILING,
-    scalar.cos: libsbml.AST_FUNCTION_COS,
-    scalar.cosh: libsbml.AST_FUNCTION_COSH,
+    real.asin: libsbml.AST_FUNCTION_ARCSIN,
+    real.asinh: libsbml.AST_FUNCTION_ARCSINH,
+    real.atan: libsbml.AST_FUNCTION_ARCTAN,
+    real.atanh: libsbml.AST_FUNCTION_ARCTANH,
+    real.ceil: libsbml.AST_FUNCTION_CEILING,
+    real.cos: libsbml.AST_FUNCTION_COS,
+    real.cosh: libsbml.AST_FUNCTION_COSH,
     "AST_FUNCTION_COT": libsbml.AST_FUNCTION_COT,
     "AST_FUNCTION_COTH": libsbml.AST_FUNCTION_COTH,
     "AST_FUNCTION_CSC": libsbml.AST_FUNCTION_CSC,
     "AST_FUNCTION_CSCH": libsbml.AST_FUNCTION_CSCH,
     "AST_FUNCTION_DELAY": libsbml.AST_FUNCTION_DELAY,
-    scalar.exp: libsbml.AST_FUNCTION_EXP,
-    scalar.factorial: libsbml.AST_FUNCTION_FACTORIAL,
-    scalar.floor: libsbml.AST_FUNCTION_FLOOR,
-    scalar.log: libsbml.AST_FUNCTION_LN,
-    scalar.log10: libsbml.AST_FUNCTION_LOG,
+    real.exp: libsbml.AST_FUNCTION_EXP,
+    real.factorial: libsbml.AST_FUNCTION_FACTORIAL,
+    real.floor: libsbml.AST_FUNCTION_FLOOR,
+    real.log: libsbml.AST_FUNCTION_LN,
+    real.log10: libsbml.AST_FUNCTION_LOG,
     "AST_FUNCTION_PIECEWISE": libsbml.AST_FUNCTION_PIECEWISE,
-    symbol.pow: libsbml.AST_FUNCTION_POWER,
-    scalar.sqrt: libsbml.AST_FUNCTION_ROOT,
+    real.pow: libsbml.AST_FUNCTION_POWER,
+    real.sqrt: libsbml.AST_FUNCTION_ROOT,
     "AST_FUNCTION_SEC": libsbml.AST_FUNCTION_SEC,
     "AST_FUNCTION_SECH": libsbml.AST_FUNCTION_SECH,
-    scalar.sin: libsbml.AST_FUNCTION_SIN,
-    scalar.sinh: libsbml.AST_FUNCTION_SINH,
-    scalar.tan: libsbml.AST_FUNCTION_TAN,
-    scalar.tanh: libsbml.AST_FUNCTION_TANH,
-    symbol.and_: libsbml.AST_LOGICAL_AND,
-    symbol.invert: libsbml.AST_LOGICAL_NOT,
-    symbol.or_: libsbml.AST_LOGICAL_OR,
-    symbol.xor: libsbml.AST_LOGICAL_XOR,
-    symbol.eq: libsbml.AST_RELATIONAL_EQ,
-    symbol.ge: libsbml.AST_RELATIONAL_GEQ,
-    symbol.gt: libsbml.AST_RELATIONAL_GT,
-    symbol.le: libsbml.AST_RELATIONAL_LEQ,
-    symbol.lt: libsbml.AST_RELATIONAL_LT,
-    symbol.ne: libsbml.AST_RELATIONAL_NEQ,
+    real.sin: libsbml.AST_FUNCTION_SIN,
+    real.sinh: libsbml.AST_FUNCTION_SINH,
+    real.tan: libsbml.AST_FUNCTION_TAN,
+    real.tanh: libsbml.AST_FUNCTION_TANH,
+    real.and_: libsbml.AST_LOGICAL_AND,
+    real.invert: libsbml.AST_LOGICAL_NOT,
+    real.or_: libsbml.AST_LOGICAL_OR,
+    real.xor: libsbml.AST_LOGICAL_XOR,
+    real.eq: libsbml.AST_RELATIONAL_EQ,
+    real.ge: libsbml.AST_RELATIONAL_GEQ,
+    real.gt: libsbml.AST_RELATIONAL_GT,
+    real.le: libsbml.AST_RELATIONAL_LEQ,
+    real.lt: libsbml.AST_RELATIONAL_LT,
+    real.ne: libsbml.AST_RELATIONAL_NEQ,
     "AST_END_OF_CORE": libsbml.AST_END_OF_CORE,
     "AST_FUNCTION_MAX": libsbml.AST_FUNCTION_MAX,
     "AST_FUNCTION_MIN": libsbml.AST_FUNCTION_MIN,
@@ -188,11 +189,11 @@ def float_to_mathML(x: float):
 
 
 @to_mathML.register
-def symbol_to_mathML(x: Symbol):
+def real_to_mathML(x: Real):
     if x.expression is None:
         node = libsbml.ASTNode(libsbml.AST_NAME)
         node.setId(str(x))
-        node.setName(x.name)
+        node.setName(get_symbolite_info(x).value.name)
         return node
 
     if len(x.expression.kwargs) > 0:

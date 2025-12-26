@@ -4,8 +4,8 @@ from collections import ChainMap
 
 import libsbml
 from libsbml import ASTNode
-from symbolite import Symbol, abstract, scalar
-from symbolite.abstract import symbol
+from symbolite import Real
+from symbolite.abstract import real
 from symbolite.core import as_function
 
 from .symbol import MathMLSpecialSymbol, MathMLSymbol
@@ -29,9 +29,9 @@ def get_value(cast_to: type):
 
 def minus(*args):
     if len(args) == 1:
-        return symbol.neg(*args)
+        return real.neg(*args)
     elif len(args) == 2:
-        return symbol.sub(*args)
+        return real.sub(*args)
     else:
         raise TypeError("Received AST_MINUS with more than 2 children.")
 
@@ -39,9 +39,9 @@ def minus(*args):
 def root(*args):
     match args:
         case (arg,) | (2, arg):
-            return scalar.sqrt(arg)
+            return real.sqrt(arg)
         case (exp, arg):
-            return scalar.pow(arg, symbol.truediv(1, exp))
+            return real.pow(arg, real.truediv(1, exp))
         case _:
             raise TypeError(f"unexpected number of arguments: {len(args)}")
 
@@ -49,7 +49,7 @@ def root(*args):
 def log(*args):
     match args:
         case (10, x) | (x,):
-            return scalar.log10(x)
+            return real.log10(x)
         case _:
             raise TypeError(f"unexpected arguments for log: {args}")
 
@@ -62,11 +62,11 @@ def reduced(func):
 
 
 mapper = {
-    libsbml.AST_PLUS: symbol.add,
+    libsbml.AST_PLUS: real.add,
     libsbml.AST_MINUS: minus,
-    libsbml.AST_TIMES: symbol.mul,
-    libsbml.AST_DIVIDE: symbol.truediv,
-    libsbml.AST_POWER: symbol.pow,
+    libsbml.AST_TIMES: real.mul,
+    libsbml.AST_DIVIDE: real.truediv,
+    libsbml.AST_POWER: real.pow,
     libsbml.AST_INTEGER: get_value(int),
     libsbml.AST_REAL: get_value(float),
     libsbml.AST_REAL_E: get_value(float),
@@ -74,57 +74,57 @@ mapper = {
     libsbml.AST_NAME: as_symbol,
     libsbml.AST_NAME_AVOGADRO: "AST_NAME_AVOGADRO",
     libsbml.AST_NAME_TIME: as_special_symbol,
-    libsbml.AST_CONSTANT_E: scalar.e,
+    libsbml.AST_CONSTANT_E: real.e,
     libsbml.AST_CONSTANT_FALSE: False,
-    libsbml.AST_CONSTANT_PI: scalar.pi,
+    libsbml.AST_CONSTANT_PI: real.pi,
     libsbml.AST_CONSTANT_TRUE: True,
     libsbml.AST_LAMBDA: "AST_LAMBDA",
     libsbml.AST_FUNCTION: "AST_FUNCTION",
-    libsbml.AST_FUNCTION_ABS: scalar.abs,
-    libsbml.AST_FUNCTION_ARCCOS: scalar.acos,
-    libsbml.AST_FUNCTION_ARCCOSH: scalar.acosh,
+    libsbml.AST_FUNCTION_ABS: real.abs,
+    libsbml.AST_FUNCTION_ARCCOS: real.acos,
+    libsbml.AST_FUNCTION_ARCCOSH: real.acosh,
     libsbml.AST_FUNCTION_ARCCOT: "AST_FUNCTION_ARCCOT",
     libsbml.AST_FUNCTION_ARCCOTH: "AST_FUNCTION_ARCCOTH",
     libsbml.AST_FUNCTION_ARCCSC: "AST_FUNCTION_ARCCSC",
     libsbml.AST_FUNCTION_ARCCSCH: "AST_FUNCTION_ARCCSCH",
     libsbml.AST_FUNCTION_ARCSEC: "AST_FUNCTION_ARCSEC",
     libsbml.AST_FUNCTION_ARCSECH: "AST_FUNCTION_ARCSECH",
-    libsbml.AST_FUNCTION_ARCSIN: scalar.asin,
-    libsbml.AST_FUNCTION_ARCSINH: scalar.asinh,
-    libsbml.AST_FUNCTION_ARCTAN: scalar.atan,
-    libsbml.AST_FUNCTION_ARCTANH: scalar.atanh,
-    libsbml.AST_FUNCTION_CEILING: scalar.ceil,
-    libsbml.AST_FUNCTION_COS: scalar.cos,
-    libsbml.AST_FUNCTION_COSH: scalar.cosh,
+    libsbml.AST_FUNCTION_ARCSIN: real.asin,
+    libsbml.AST_FUNCTION_ARCSINH: real.asinh,
+    libsbml.AST_FUNCTION_ARCTAN: real.atan,
+    libsbml.AST_FUNCTION_ARCTANH: real.atanh,
+    libsbml.AST_FUNCTION_CEILING: real.ceil,
+    libsbml.AST_FUNCTION_COS: real.cos,
+    libsbml.AST_FUNCTION_COSH: real.cosh,
     libsbml.AST_FUNCTION_COT: "AST_FUNCTION_COT",
     libsbml.AST_FUNCTION_COTH: "AST_FUNCTION_COTH",
     libsbml.AST_FUNCTION_CSC: "AST_FUNCTION_CSC",
     libsbml.AST_FUNCTION_CSCH: "AST_FUNCTION_CSCH",
     libsbml.AST_FUNCTION_DELAY: "AST_FUNCTION_DELAY",
-    libsbml.AST_FUNCTION_EXP: scalar.exp,
-    libsbml.AST_FUNCTION_FACTORIAL: scalar.factorial,
-    libsbml.AST_FUNCTION_FLOOR: scalar.floor,
-    libsbml.AST_FUNCTION_LN: scalar.log,
+    libsbml.AST_FUNCTION_EXP: real.exp,
+    libsbml.AST_FUNCTION_FACTORIAL: real.factorial,
+    libsbml.AST_FUNCTION_FLOOR: real.floor,
+    libsbml.AST_FUNCTION_LN: real.log,
     libsbml.AST_FUNCTION_LOG: log,
     libsbml.AST_FUNCTION_PIECEWISE: "AST_FUNCTION_PIECEWISE",
-    libsbml.AST_FUNCTION_POWER: symbol.pow,
+    libsbml.AST_FUNCTION_POWER: real.pow,
     libsbml.AST_FUNCTION_ROOT: root,
     libsbml.AST_FUNCTION_SEC: "AST_FUNCTION_SEC",
     libsbml.AST_FUNCTION_SECH: "AST_FUNCTION_SECH",
-    libsbml.AST_FUNCTION_SIN: scalar.sin,
-    libsbml.AST_FUNCTION_SINH: scalar.sinh,
-    libsbml.AST_FUNCTION_TAN: scalar.tan,
-    libsbml.AST_FUNCTION_TANH: scalar.tanh,
-    libsbml.AST_LOGICAL_AND: reduced(symbol.and_),
-    libsbml.AST_LOGICAL_NOT: symbol.invert,
-    libsbml.AST_LOGICAL_OR: reduced(symbol.or_),
-    libsbml.AST_LOGICAL_XOR: symbol.xor,
-    libsbml.AST_RELATIONAL_EQ: reduced(symbol.eq),
-    libsbml.AST_RELATIONAL_GEQ: symbol.ge,
-    libsbml.AST_RELATIONAL_GT: symbol.gt,
-    libsbml.AST_RELATIONAL_LEQ: symbol.le,
-    libsbml.AST_RELATIONAL_LT: symbol.lt,
-    libsbml.AST_RELATIONAL_NEQ: reduced(symbol.ne),
+    libsbml.AST_FUNCTION_SIN: real.sin,
+    libsbml.AST_FUNCTION_SINH: real.sinh,
+    libsbml.AST_FUNCTION_TAN: real.tan,
+    libsbml.AST_FUNCTION_TANH: real.tanh,
+    libsbml.AST_LOGICAL_AND: reduced(real.and_),
+    libsbml.AST_LOGICAL_NOT: real.invert,
+    libsbml.AST_LOGICAL_OR: reduced(real.or_),
+    libsbml.AST_LOGICAL_XOR: real.xor,
+    libsbml.AST_RELATIONAL_EQ: reduced(real.eq),
+    libsbml.AST_RELATIONAL_GEQ: real.ge,
+    libsbml.AST_RELATIONAL_GT: real.gt,
+    libsbml.AST_RELATIONAL_LEQ: real.le,
+    libsbml.AST_RELATIONAL_LT: real.lt,
+    libsbml.AST_RELATIONAL_NEQ: reduced(real.ne),
     libsbml.AST_END_OF_CORE: "AST_END_OF_CORE",
     libsbml.AST_FUNCTION_MAX: "AST_FUNCTION_MAX",
     libsbml.AST_FUNCTION_MIN: "AST_FUNCTION_MIN",
@@ -239,7 +239,7 @@ class mathMLImporter:
         else:
             return func
 
-    def yield_children(self, node: libsbml.ASTNode) -> Symbol:
+    def yield_children(self, node: libsbml.ASTNode) -> Real:
         for i in range(node.getNumChildren()):
             yield self.convert(node.getChild(i))
 
@@ -252,11 +252,13 @@ class mathMLImporter:
                 new_name = name
                 while new_name in name_mapping:
                     new_name = f"_{new_name}"
-                name_mapping[name] = Symbol(new_name)
+                name_mapping[name] = Real(new_name)
             params = name_mapping.values()
             body = body.subs_by_name(**name_mapping)
 
-        func = as_function(body, func_name, tuple(map(str, params)), libsl=abstract)
+        func = as_function(
+            body, func_name, tuple(map(str, params)), libsl=abstract
+        )  # TODO: change to new symbolite
         self.add_function(func_name, func)
         return func
 

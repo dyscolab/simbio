@@ -73,9 +73,9 @@ def test_species(
         s = getattr(compartment, name)
         assert isinstance(s, Species)
         if initial_amount is None:
-            assert s.variable.initial == initial_concentration
+            assert s.initial == initial_concentration
         else:
-            assert s.variable.initial == initial_amount
+            assert s.initial == initial_amount
 
 
 @mark.parametrize("spatial_dimensions", [None, 3])
