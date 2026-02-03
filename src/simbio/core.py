@@ -5,9 +5,16 @@ from typing import (
     Any,
 )
 
-from poincare import Derivative, Variable
+from poincare import (
+    Derivative,
+    Variable,
+    Simulator,
+    Parameter,
+    assign,
+    initial,
+)
 from poincare._node import Node, NodeMapper
-from poincare.reactions import Reactant
+from poincare.reactions import Reactant, RateLaw, MassAction, reaction_initial
 from poincare.reactions.reactions import (
     compensate_volume,
     make_concentration,

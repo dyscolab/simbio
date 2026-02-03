@@ -1,93 +1,80 @@
 from __future__ import annotations
-from poincare.types import EquationGroup
-from symbolite import Real
 from ..core import (
-    Compartment,
+    System,
     MassAction,
     Parameter,
-    Species,
-    ReactionSpecies,
+    Reactant,
     assign,
-    initial,
+    reaction_initial,
 )
 
 
-class Creation(EquationGroup):
+class Creation(System):
     """A substance is created from nothing at a constant rate.
 
     ∅ -> A
     """
 
-    def __init__(self, A: Species | ReactionSpecies | Real, rate: float | Real):
-        self.equations = MassAction(reactants=[], products=[A], rate=rate).equations
+    A: Reactant = reaction_initial()
+    rate: Parameter = assign()
+    reaction = MassAction(reactants=[], products=[A], rate=rate)
 
 
-class AutoCreation(EquationGroup):
+class AutoCreation(System):
     """A substance is created at a rate proportional to its abundance.
 
     A -> 2A
     """
 
-    def __init__(self, A: Species | ReactionSpecies | Real, rate: float | Real):
-        self.equations = MassAction(reactants=[A], products=[A, A], rate=rate).equations
+    A: Reactant = reaction_initial()
+    rate: Parameter = assign()
+    reaction = MassAction(reactants=[A], products=[2 * A], rate=rate)
 
 
-class Destruction(EquationGroup):
+class Destruction(System):
     """A substance degrades into nothing.
 
     A -> ∅
     """
 
-    def __init__(self, A: Species | ReactionSpecies | Real, rate: float | Real):
-        self.equations = MassAction(reactants=[A], products=[], rate=rate).equations
+    A: Reactant = reaction_initial()
+    rate: Parameter = assign()
+    reaction = MassAction(reactants=[A], products=[], rate=rate)
 
 
-class Conversion(EquationGroup):
+class Conversion(System):
     """A substance convert to another.
 
     A -> B
     """
 
-    def __init__(
-        self,
-        A: Species | ReactionSpecies | Real,
-        B: Species | ReactionSpecies | Real,
-        rate: float | Real,
-    ):
-        self.equations = MassAction(reactants=[A], products=[B], rate=rate).equations
+    A: Reactant = reaction_initial()
+    B: Reactant = reaction_initial()
+    rate: Parameter = assign()
+    reaction = MassAction(reactants=[A], products=[B], rate=rate)
 
 
-class Synthesis(EquationGroup):
+class Synthesis(System):
     """Two or more simple substances combine to form a more complex substance.
 
     A + B -> AB
     """
 
-    def __init__(
-        self,
-        A: Species | ReactionSpecies | Real,
-        B: Species | ReactionSpecies | Real,
-        AB: Species | ReactionSpecies | Real,
-        rate: float | Real,
-    ):
-        self.equations = MassAction(
-            reactants=[A, B], products=[AB], rate=rate
-        ).equations
+    A: Reactant = reaction_initial()
+    B: Reactant = reaction_initial()
+    AB: Reactant = reaction_initial()
+    rate: Parameter = assign()
+    reaction = MassAction(reactants=[A, B], products=[AB], rate=rate)
 
 
-class Dissociation(EquationGroup):
+class Dissociation(System):
     """A more complex substance breaks down into its more simple parts.
 
     AB -> A + B
     """
 
-    def __init__(
-        self,
-        AB: Species | ReactionSpecies | Real,
-        A: Species | ReactionSpecies | Real,
-        B: Species | ReactionSpecies | Real,
-        rate: float | Real,
-    ):
-        self.equations = MassAction(
-            reactants=[AB], products=[A, B], rate=rate
-        ).equations
+    AB: Reactant = reaction_initial()
+    A: Reactant = reaction_initial()
+    B: Reactant = reaction_initial()
+    rate: Parameter = assign()
+    reaction = MassAction(reactants=[AB], products=[A, B], rate=rate)

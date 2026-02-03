@@ -2,69 +2,83 @@ from poincare.types import EquationGroup
 from symbolite import Real
 
 from ..core import (
-    Compartment,
+    System,
     Parameter,
     RateLaw,
-    Species,
+    Reactant,
     assign,
-    initial,
-    ReactionSpecies,
+    reaction_initial,
 )
 from .compound import Dissociation, ReversibleSynthesis
 
 
-class MichaelisMenten(EquationGroup):
-    def __init__(
-        self,
-        E: Species | ReactionSpecies | Real,
-        S: Species | ReactionSpecies | Real,
-        ES: Species | ReactionSpecies | Real,
-        P: Species | ReactionSpecies | Real,
-        forward_rate: float | Real,
-        reverse_rate: float | Real,
-        catalytic_rate: float | Real,
-    ):
-        binding_reaction = ReversibleSynthesis(
-            A=E,
-            B=S,
-            AB=ES,
-            forward_rate=forward_rate,
-            reverse_rate=reverse_rate,
-        )
-        dissociation_reaction = Dissociation(
-            AB=ES,
-            A=E,
-            B=P,
-            rate=catalytic_rate,
-        )
-        self.equations = binding_reaction.equations + dissociation_reaction.equations
+class MichaelisMenten(System):
+    E: Reactant = reaction_initial()
+    S: Reactant = reaction_initial()
+    ES: Reactant = reaction_initial()
+    P: Reactant = reaction_initial()
+    forward_rate: Parameter = assign()
+    reverse_rate: Parameter = assign()
+    catalytic_rate: Parameter = assign()
+
+    binding_reaction = ReversibleSynthesis(
+        A=E,
+        B=S,
+        AB=ES,
+        forward_rate=forward_rate,
+        reverse_rate=reverse_rate,
+    )
+    dissociation_reaction = Dissociation(
+        AB=ES,
+        A=E,
+        B=P,
+        rate=catalytic_rate,
+    )
+
+    def to_eq_approx(self):
+        raise NotImplementedError
+        # Should we generate a new S species or modify the concentration to add ES
+        # Should we invalidate this reaction (self) because we are using these elsewhere
+        # michaelis_constant = reverse_rate / forward_rate
+        # return MichaelisMentenEqApprox(
+        #     S=S,
+        #     P=P,
+        #     maximum_velocity=catalytic_rate * (E.concentration + ES.concentration),
+        #     michaelis_constant=michaelis_constant,
+        # )
+
+    def to_qss_approx(self):
+        raise NotImplementedError
+        # Should we generate a new S species or modify the concentration to add ES
+        # Should we invalidate this reaction (self) because we are using these elsewhere
+        # michaelis_constant = (reverse_rate + catalytic_rate) / forward_rate
+        # return MichaelisMentenEqApprox(
+        #     S=S,
+        #     P=P,
+        #     maximum_velocity=catalytic_rate * (E.concentration + ES.concentration),
+        #     michaelis_constant=michaelis_constant,
+        # )
 
 
-class MichaelisMentenEqApprox(EquationGroup):
-    def __init__(
-        self,
-        S: Species | ReactionSpecies | Real,
-        P: Species | ReactionSpecies | Real,
-        maximum_velocity: float | Real,
-        dissociation_constant: float | Real,
-    ):
-        self.equations = RateLaw(
-            reactants=[S],
-            products=[P],
-            rate_law=maximum_velocity * S / (dissociation_constant + S),
-        ).equations
+class MichaelisMentenEqApprox(System):
+    S: Reactant = reaction_initial()
+    P: Reactant = reaction_initial()
+    maximum_velocity: Parameter = assign()
+    dissociation_constant: Parameter = assign()
+    reaction = RateLaw(
+        reactants=[S],
+        products=[P],
+        rate_law=maximum_velocity * S.variable / (dissociation_constant + S.variable),
+    )
 
 
-class MichaelisMentenQuasiSSAprox(EquationGroup):
-    def __init__(
-        self,
-        S: Species | ReactionSpecies | Real,
-        P: Species | ReactionSpecies | Real,
-        maximum_velocity: float | Real,
-        michaelis_constant: float | Real,
-    ):
-        self.equations = RateLaw(
-            reactants=[S],
-            products=[P],
-            rate_law=maximum_velocity * S / (michaelis_constant + S),
-        ).equations
+class MichaelisMentenQuasiSSAprox(System):
+    S: Reactant = reaction_initial()
+    P: Reactant = reaction_initial()
+    maximum_velocity: Parameter = assign()
+    michaelis_constant: Parameter = assign()
+    reaction = RateLaw(
+        reactants=[S],
+        products=[P],
+        rate_law=maximum_velocity * S.variable / (michaelis_constant + S.variable),
+    )
