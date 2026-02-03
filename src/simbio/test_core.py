@@ -1,20 +1,27 @@
 import numpy as np
-from poincare import Variable, System, Independent
-from poincare.types import Initial
-from pytest import mark
+from poincare import Independent, System, Variable
 
 from . import (
     Compartment,
-    Constant,
     MassAction,
     Parameter,
     RateLaw,
     Simulator,
     Species,
     assign,
-    initial,
 )
-from .core import Volume, concentration, amount, volume
+from .core import (
+    Reactant,
+    Volume,
+    amount,
+    compensate_volume,
+    concentration,
+    make_concentration,
+    reaction_amount,
+    reaction_concentration,
+    reaction_initial,
+    volume,
+)
 
 
 def test_no_external_species_in_nested_comparment():
@@ -36,6 +43,23 @@ def test_no_external_species_in_nested_comparment():
         assert True
         return
     assert False
+
+
+def test_external_ic_in_nested_comparment():
+    class Nested(Compartment):
+        V: Volume = volume(default=1)
+        A: Species = amount(default=1)
+
+        eq = RateLaw(reactants=[A], products=[2 * A], rate_law=1)
+
+    class Model(Compartment):
+        V: Volume = volume(default=1)
+        A: Species = amount(default=1)
+
+        nested = Nested(A=2)
+        eq = RateLaw(reactants=[A], products=[2 * A], rate_law=1)
+
+    assert Model.nested.A.initial == 2
 
 
 def test_no_volume_in_compartment():
@@ -273,117 +297,71 @@ def test_nested_compartments():
     assert Model.nested._volume == Model.nested.V
 
 
-# def check_species(
-#     x: Species,
-#     *,
-#     initial: Initial,
-#     parent: Compartment | type[Compartment],
-# ):
-#     assert isinstance(x, Species)
-#     assert x.initial == initial
-#     assert x.parent is parent
+def test_species_in_reactant():
+    class Nested(Compartment):
+        V: Volume = Volume(initial=2)
+        A: Reactant = reaction_amount(default=0.5)
+        B: Reactant = reaction_concentration(default=2)
+        AB: Reactant = reaction_concentration(default=0)
+
+        eq = RateLaw(reactants=[A, B], products=[AB], rate_law=2)
+
+    assert make_concentration(Nested.A.variable) == Nested.A.variable / Nested.V
+    assert make_concentration(Nested.B.variable) == Nested.B.variable
+    assert (
+        compensate_volume(Nested.A.variable, rhs=2 * Nested.A.variable)
+        == 2 * Nested.A.variable
+    )
+    assert (
+        compensate_volume(Nested.B.variable, rhs=2 * Nested.B.variable)
+        == 2 * Nested.B.variable / Nested.V
+    )
+    nsim = Simulator(Nested)
+    nsim.solve(save_at=np.linspace(0, 10, 10))
+
+    class Model(Compartment):
+        V: Volume = Volume(initial=4)
+        A: Reactant = reaction_amount(default=1)
+        B: Reactant = reaction_concentration(default=3)
+        nested = Nested()
+        eq = MassAction(products=[A, B], reactants=[nested.AB], rate=1)
+
+    sim = Simulator(Model)
+    sim.solve(save_at=np.linspace(0, 10, 10))
 
 
-# def test_single_species():
-#     class Model(Compartment):
-#         x: Species = initial(default=0)
+def test_species_in_reactant_with_external_stoichiometry():
+    class Nested(System):
+        A: Reactant = reaction_initial(default=0.5)
+        B: Reactant = reaction_initial(default=2)
+        AB: Reactant = reaction_initial(default=0)
 
-#     model = Model
-#     check_species(model.x, initial=0, parent=model)
-#     model = Model()
-#     check_species(model.x, initial=0, parent=model)
-#     model = Model(x=1)
-#     check_species(model.x, initial=1, parent=model)
+        eq = RateLaw(reactants=[A, B], products=[AB], rate_law=2)
 
+    nsim = Simulator(Nested)
+    nsim.solve(save_at=np.linspace(0, 10, 10))
 
-# def test_yield_variables():
-#     class Model(Compartment):
-#         x: Species = initial(default=0)
+    class Model(Compartment):
+        V: Volume = Volume(initial=4)
+        A: Reactant = reaction_amount(default=1)
+        B: Reactant = reaction_concentration(default=3)
+        nested = Nested(A=2 * A, B=3 * B)
 
-#     assert set(Model._yield(Species)) == {Model.x}
-#     assert set(Model._yield(Variable)) == {Model.x}
+        eq = MassAction(products=[nested.A, B], reactants=[nested.AB], rate=1)
 
-
-# @mark.parametrize("f", [non_instance, instance])
-# def test_reaction(f):
-#     class Model(Compartment):
-#         x: Species = initial(default=0)
-#         c: Constant = assign(default=0, constant=True)
-#         eq1 = RateLaw(reactants=[x], products=[], rate_law=c)
-#         eq2 = RateLaw(reactants=[], products=[x], rate_law=c)
-#         eq3 = RateLaw(reactants=[2 * x], products=[3 * x], rate_law=c)
-
-#     model: Model = f(Model)
-#     assert model.x.equation_order == 1
-#     assert set(model.eq1.equations) == {model.x.derive() << -1 * model.c}
-#     assert set(model.eq2.equations) == {model.x.derive() << 1 * model.c}
-#     assert set(model.eq3.equations) == {model.x.derive() << 1 * model.c}
-
-
-# @mark.parametrize("f", [non_instance, instance])
-# def test_mass_action(f):
-#     class Model(Compartment):
-#         x: Species = initial(default=0)
-#         c: Constant = assign(default=0, constant=True)
-#         eq1 = MassAction(reactants=[x], products=[], rate=c)
-#         eq2 = MassAction(reactants=[], products=[x], rate=c)
-#         eq3 = MassAction(reactants=[2 * x], products=[3 * x], rate=c)
-
-#     model: Model = f(Model)
-#     assert model.x.equation_order == 1
-#     assert set(model.eq1.equations) == {
-#         model.x.derive() << -1 * (model.c * (model.x**1))
-#     }
-#     assert set(model.eq2.equations) == {model.x.derive() << 1 * model.c}
-#     assert set(model.eq3.equations) == {
-#         model.x.derive() << 1 * (model.c * (model.x**2))
-#     }
-
-
-# def test_duplicate_species():
-#     class Duplicate(Compartment):
-#         x: Species = initial(default=1)
-#         eq = MassAction(reactants=[x, x], products=[], rate=1)
-
-#     class Double(Compartment):
-#         x: Species = initial(default=1)
-#         eq = MassAction(reactants=[2 * x], products=[], rate=1)
-
-#     times = np.linspace(0, 1, 10)
-#     duplicate = Simulator(Duplicate).solve(save_at=times)
-#     double = Simulator(Double).solve(save_at=times)
-#     assert np.allclose(duplicate, double)
-
-
-# def test_simulator():
-#     class Model(Compartment):
-#         x: Species = initial(default=1)
-#         k: Parameter = assign(default=1)
-#         eq = MassAction(reactants=[x], products=[], rate=k)
-
-#     sim = Simulator(Model)
-#     assert set(sim.compiled.variables) == {Model.x}
-#     assert set(sim.compiled.parameters) == {Model.k}
-#     assert sim.compiled.mapper == {Model.x: 1, Model.k: 1}
-#     assert set(sim.transform.output) == {"x"}
-
-#     times = np.linspace(0, 1, 10)
-#     result = sim.solve(save_at=times)
-#     assert np.allclose(result["x"], np.exp(-times), rtol=1e-3, atol=1e-3)
-
-#     assert sim.create_problem({Model.x: 2}).y[0] == 2
-#     assert sim.create_problem({Model.x: 2}).y[0] == 2
-
-
-# def test_transform():
-#     class Model(Compartment):
-#         x: Species = initial(default=1)
-#         k: Parameter = assign(default=1)
-#         eq = MassAction(reactants=[x], products=[], rate=k)
-
-#     times = np.linspace(0, 1, 10)
-
-#     result = Simulator(Model).solve(save_at=times)
-#     result2 = Simulator(Model, transform={"double": 2 * Model.x}).solve(save_at=times)
-
-#     assert np.allclose(result2["double"], 2 * result["x"])
+    assert Model.nested.A.stoichiometry == 2
+    assert Model.nested.B.stoichiometry == 3
+    assert (
+        make_concentration(Model.nested.A.variable) == Model.nested.A.variable / Model.V
+    )
+    assert make_concentration(Model.nested.B.variable) == Model.nested.B.variable
+    assert (
+        compensate_volume(Model.nested.A.variable, 2 * Model.nested.A.variable)
+        == 2 * Model.nested.A.variable
+    )
+    assert (
+        compensate_volume(Model.nested.B.variable, 2 * Model.nested.B.variable)
+        == 2 * Model.nested.B.variable / Model.V
+    )
+    sim = Simulator(Model)
+    sim.solve(save_at=np.linspace(0, 10, 10))
