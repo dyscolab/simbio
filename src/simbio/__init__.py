@@ -1,4 +1,4 @@
-from poincare import Constant, Independent, Parameter, assign
+from poincare import Constant, Independent
 
 from .core import (
     Compartment,
@@ -9,6 +9,8 @@ from .core import (
     Species,
     System,
     Variable,
+    Parameter,
+    assign,
     initial,
     reaction_amount,
     reaction_concentration,
@@ -17,7 +19,6 @@ from .core import (
 __all__ = [
     "Constant",
     "Independent",
-    "Parameter",
     "assign",
 ]
 __all__ += [
@@ -26,6 +27,7 @@ __all__ += [
     "Variable",
     "Reactant",
     "Species",
+    "Parameter",
     "MassAction",
     "RateLaw",
     "initial",
