@@ -6,6 +6,7 @@ from . import (
     MassAction,
     Parameter,
     RateLaw,
+    AbsoluteRateLaw,
     Simulator,
     Species,
     assign,
@@ -24,7 +25,7 @@ from .core import (
 )
 
 
-def test_no_external_species_in_nested_comparment():
+def test_no_external_species_in_nested_compartment():
     class Nested(Compartment):
         V: Volume = volume(default=1)
         A: Species = amount(default=1)
@@ -45,7 +46,7 @@ def test_no_external_species_in_nested_comparment():
     assert False
 
 
-def test_external_ic_in_nested_comparment():
+def test_external_ic_in_nested_compartment():
     class Nested(Compartment):
         V: Volume = volume(default=1)
         A: Species = amount(default=1)
@@ -132,6 +133,54 @@ def test_rate_law_with_concentration():
         AB: Species = concentration(default=0)
 
         eq = RateLaw(reactants=[A, 2 * B], products=[AB], rate_law=1)
+
+    sim2 = Simulator(VolumeModel)
+    result_2 = sim2.solve(save_at=np.linspace(0, 10, 10))[["A", "AB", "B"]]
+    assert np.all(result_2 == result_1)
+
+
+def test_absolute_rate_law_with_amount():
+    class Model(System):
+        A: Variable = Variable(initial=1)
+        B: Variable = Variable(initial=2)
+        AB: Variable = Variable(initial=0)
+
+        eq = AbsoluteRateLaw(reactants=[A, 2 * B], products=[AB], rate_law=1)
+
+    sim1 = Simulator(Model)
+    result_1 = sim1.solve(save_at=np.linspace(0, 10, 10))
+
+    class VolumeModel(Compartment):
+        V: Volume = volume(default=2)
+        A: Species = amount(default=1)
+        B: Species = amount(default=2)
+        AB: Species = amount(default=0)
+
+        eq = AbsoluteRateLaw(reactants=[A, 2 * B], products=[AB], rate_law=1)
+
+    sim2 = Simulator(VolumeModel)
+    result_2 = sim2.solve(save_at=np.linspace(0, 10, 10))[["A", "AB", "B"]]
+    assert np.all(result_2 == result_1)
+
+
+def test_absolute_rate_law_with_concentration():
+    class Model(System):
+        A: Variable = Variable(initial=1)
+        B: Variable = Variable(initial=2)
+        AB: Variable = Variable(initial=0)
+
+        eq = AbsoluteRateLaw(reactants=[A, 2 * B], products=[AB], rate_law=1 / 2)
+
+    sim1 = Simulator(Model)
+    result_1 = sim1.solve(save_at=np.linspace(0, 10, 10))
+
+    class VolumeModel(Compartment):
+        V: Volume = volume(default=2)
+        A: Species = concentration(default=1)
+        B: Species = concentration(default=2)
+        AB: Species = concentration(default=0)
+
+        eq = AbsoluteRateLaw(reactants=[A, 2 * B], products=[AB], rate_law=1)
 
     sim2 = Simulator(VolumeModel)
     result_2 = sim2.solve(save_at=np.linspace(0, 10, 10))[["A", "AB", "B"]]
@@ -309,12 +358,16 @@ def test_species_in_reactant():
     assert make_concentration(Nested.A.variable) == Nested.A.variable / Nested.V
     assert make_concentration(Nested.B.variable) == Nested.B.variable
     assert (
-        compensate_volume(Nested.A.variable, rhs=2 * Nested.A.variable)
-        == 2 * Nested.A.variable
+        compensate_volume(
+            Nested.A.variable, rhs=2 * Nested.A.variable, reaction_is_concentration=True
+        )
+        == 2 * Nested.A.variable * Nested.V
     )
     assert (
-        compensate_volume(Nested.B.variable, rhs=2 * Nested.B.variable)
-        == 2 * Nested.B.variable / Nested.V
+        compensate_volume(
+            Nested.B.variable, rhs=2 * Nested.B.variable, reaction_is_concentration=True
+        )
+        == 2 * Nested.B.variable
     )
     nsim = Simulator(Nested)
     nsim.solve(save_at=np.linspace(0, 10, 10))
@@ -356,12 +409,20 @@ def test_species_in_reactant_with_external_stoichiometry():
     )
     assert make_concentration(Model.nested.B.variable) == Model.nested.B.variable
     assert (
-        compensate_volume(Model.nested.A.variable, 2 * Model.nested.A.variable)
-        == 2 * Model.nested.A.variable
+        compensate_volume(
+            Model.nested.A.variable,
+            2 * Model.nested.A.variable,
+            reaction_is_concentration=True,
+        )
+        == 2 * Model.nested.A.variable * Model.V
     )
     assert (
-        compensate_volume(Model.nested.B.variable, 2 * Model.nested.B.variable)
-        == 2 * Model.nested.B.variable / Model.V
+        compensate_volume(
+            Model.nested.B.variable,
+            2 * Model.nested.B.variable,
+            reaction_is_concentration=True,
+        )
+        == 2 * Model.nested.B.variable
     )
     sim = Simulator(Model)
     sim.solve(save_at=np.linspace(0, 10, 10))

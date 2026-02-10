@@ -14,7 +14,13 @@ from poincare import (
     initial,
 )
 from poincare._node import Node, NodeMapper
-from poincare.reactions import Reactant, RateLaw, MassAction, reaction_initial
+from poincare.reactions import (
+    Reactant,
+    RateLaw,
+    MassAction,
+    reaction_initial,
+    AbsoluteRateLaw,
+)
 from poincare.reactions.reactions import (
     compensate_volume,
     make_concentration,
@@ -90,10 +96,17 @@ class Species(Variable):
 
 
 @compensate_volume.register
-def compensate_volume_Species(species: Species, rhs: Real | Initial) -> Real | Initial:
+def compensate_volume_Species(
+    species: Species, rhs: Real | Initial, reaction_is_concentration: bool
+) -> Real | Initial:
     system_parent = first_system_parent(species)
-    if species.concentration and (is_instance_or_subclass(system_parent, Compartment)):
-        return rhs / system_parent._volume
+    if is_instance_or_subclass(system_parent, Compartment):
+        if species.concentration and not reaction_is_concentration:
+            return rhs / system_parent._volume
+        elif not species.concentration and reaction_is_concentration:
+            return rhs * system_parent._volume
+        else:
+            return rhs
     else:
         return rhs
 
