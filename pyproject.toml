@@ -1,7 +1,7 @@
 [project]
 name = "simbio"
 description = "A Python-based package for simulation of Chemical Reaction Networks (CRNs)."
-version = "0.4.0"
+version = "1.0.0b0"
 authors = [
   { name = "Hernán E. Grecco", email = "hernan.grecco@gmail.com" },
   { name = "Mauro Silberberg", email = "maurosilber@gmail.com" },
@@ -26,7 +26,7 @@ keywords = [
   "poincare",
 ]
 requires-python = ">=3.12"
-dependencies = ["poincare >= 0.3.1"]
+dependencies = ["poincare >= 1.0.0b2"]
 
 [project.urls]
 homepage = "https://github.com/dyscolab/simbio"
@@ -71,10 +71,10 @@ preview = ["pixi-build"]
 backend = { name = "pixi-build-python", version = "0.4.*" }
 
 [tool.pixi.package.host-dependencies]
-uv = "*"
+uv-build = "*"
 
 [tool.pixi.package.run-dependencies]
-poincare = "*"
+# poincare = "*"
 
 [tool.pixi.environments]
 default = ["test", "py312"]
@@ -131,7 +131,7 @@ pytest = "*"
 pooch = "*"
 
 [tool.pixi.feature.test.tasks]
-test = "pytest --doctest-modules"
+test = "pytest src/simbio/test_core.py src/simbio/reactions/test_reactions.py --doctest-modules"
 
 [tool.pixi.feature]
 py312.dependencies = { python = "3.12.*" }

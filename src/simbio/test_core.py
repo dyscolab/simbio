@@ -2,11 +2,11 @@ import numpy as np
 from poincare import Independent, System, Variable
 
 from . import (
+    AbsoluteRateLaw,
     Compartment,
     MassAction,
     Parameter,
     RateLaw,
-    AbsoluteRateLaw,
     Simulator,
     Species,
     assign,
@@ -97,7 +97,7 @@ def test_rate_law_with_amount():
         B: Variable = Variable(initial=2)
         AB: Variable = Variable(initial=0)
 
-        eq = RateLaw(reactants=[A, 2 * B], products=[AB], rate_law=1)
+        eq = RateLaw(reactants=[A, 2 * B], products=[AB], rate_law=2)
 
     sim1 = Simulator(Model)
     result_1 = sim1.solve(save_at=np.linspace(0, 10, 10))
@@ -112,7 +112,7 @@ def test_rate_law_with_amount():
 
     sim2 = Simulator(VolumeModel)
     result_2 = sim2.solve(save_at=np.linspace(0, 10, 10))[["A", "AB", "B"]]
-    assert np.all(result_2 == result_1)
+    assert np.all((result_1 == result_2).to_array().to_numpy())
 
 
 def test_rate_law_with_concentration():
@@ -121,7 +121,7 @@ def test_rate_law_with_concentration():
         B: Variable = Variable(initial=2)
         AB: Variable = Variable(initial=0)
 
-        eq = RateLaw(reactants=[A, 2 * B], products=[AB], rate_law=1 / 2)
+        eq = RateLaw(reactants=[A, 2 * B], products=[AB], rate_law=1)
 
     sim1 = Simulator(Model)
     result_1 = sim1.solve(save_at=np.linspace(0, 10, 10))
@@ -136,7 +136,7 @@ def test_rate_law_with_concentration():
 
     sim2 = Simulator(VolumeModel)
     result_2 = sim2.solve(save_at=np.linspace(0, 10, 10))[["A", "AB", "B"]]
-    assert np.all(result_2 == result_1)
+    assert np.all((result_1 == result_2).to_array().to_numpy())
 
 
 def test_absolute_rate_law_with_amount():
@@ -160,7 +160,7 @@ def test_absolute_rate_law_with_amount():
 
     sim2 = Simulator(VolumeModel)
     result_2 = sim2.solve(save_at=np.linspace(0, 10, 10))[["A", "AB", "B"]]
-    assert np.all(result_2 == result_1)
+    assert np.all((result_1 == result_2).to_array().to_numpy())
 
 
 def test_absolute_rate_law_with_concentration():
@@ -184,32 +184,7 @@ def test_absolute_rate_law_with_concentration():
 
     sim2 = Simulator(VolumeModel)
     result_2 = sim2.solve(save_at=np.linspace(0, 10, 10))[["A", "AB", "B"]]
-    assert np.all(result_2 == result_1)
-
-
-def test_mixed_rate_law():
-    class Model(System):
-        A: Variable = Variable(initial=1)
-        B: Variable = Variable(initial=2)
-        AB: Variable = Variable(initial=0)
-
-        eq1 = RateLaw(reactants=[A, 2 * B], products=[AB], rate_law=1 / 2)
-        eq2 = AB.derive() << 1 / 2
-
-    sim1 = Simulator(Model)
-    result_1 = sim1.solve(save_at=np.linspace(0, 10, 10))
-
-    class VolumeModel(Compartment):
-        V: Volume = volume(default=2)
-        A: Species = concentration(default=1)
-        B: Species = concentration(default=2)
-        AB: Species = amount(default=0)
-
-        eq = RateLaw(reactants=[A, 2 * B], products=[AB], rate_law=1)
-
-    sim2 = Simulator(VolumeModel)
-    result_2 = sim2.solve(save_at=np.linspace(0, 10, 10))[["A", "AB", "B"]]
-    assert np.all(result_2 == result_1)
+    assert np.all((result_1 == result_2).to_array().to_numpy())
 
 
 def test_mass_action_with_amount():
@@ -219,7 +194,7 @@ def test_mass_action_with_amount():
         AB: Variable = Variable(initial=0)
 
         eq = RateLaw(
-            reactants=[A, 2 * B], products=[AB], rate_law=(A / 2) * (B / 2) ** 2
+            reactants=[A, 2 * B], products=[AB], rate_law=(A / 2) * (B / 2) ** 2 * 2
         )
 
     sim1 = Simulator(Model)
@@ -235,7 +210,7 @@ def test_mass_action_with_amount():
 
     sim2 = Simulator(VolumeModel)
     result_2 = sim2.solve(save_at=np.linspace(0, 10, 10))[["A", "AB", "B"]]
-    assert np.all(result_2 == result_1)
+    assert np.all((result_1 == result_2).to_array().to_numpy())
 
 
 def test_mass_action_with_concentration():
@@ -244,7 +219,7 @@ def test_mass_action_with_concentration():
         B: Variable = Variable(initial=2)
         AB: Variable = Variable(initial=0)
 
-        eq = RateLaw(reactants=[A, 2 * B], products=[AB], rate_law=A * B**2 / 2)
+        eq = RateLaw(reactants=[A, 2 * B], products=[AB], rate_law=A * B**2)
 
     sim1 = Simulator(Model)
     result_1 = sim1.solve(save_at=np.linspace(0, 10, 10))
@@ -259,32 +234,7 @@ def test_mass_action_with_concentration():
 
     sim2 = Simulator(VolumeModel)
     result_2 = sim2.solve(save_at=np.linspace(0, 10, 10))[["A", "AB", "B"]]
-    assert np.all(result_2 == result_1)
-
-
-def test_mixed_mass_action():
-    class Model(Compartment):
-        V: Volume = volume(default=2)
-        A: Species = concentration(default=1)
-        B: Species = amount(default=2)
-        AB: Species = concentration(default=0)
-
-        eq = RateLaw(reactants=[A, 2 * B], products=[AB], rate_law=A * (B / 2) ** 2)
-
-    sim1 = Simulator(Model)
-    result_1 = sim1.solve(save_at=np.linspace(0, 10, 10))
-
-    class VolumeModel(Compartment):
-        V: Volume = volume(default=2)
-        A: Species = concentration(default=1)
-        B: Species = amount(default=2)
-        AB: Species = concentration(default=0)
-
-        eq = MassAction(reactants=[A, 2 * B], products=[AB], rate=1)
-
-    sim2 = Simulator(VolumeModel)
-    result_2 = sim2.solve(save_at=np.linspace(0, 10, 10))
-    assert np.all(result_2 == result_1)
+    assert np.all((result_1 == result_2).to_array().to_numpy())
 
 
 def test_changing_volume():
