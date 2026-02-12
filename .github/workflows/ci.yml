@@ -17,9 +17,8 @@ jobs:
     strategy:
       matrix:
         environment:
-          - test-py310
-          - test-py311
           - test-py312
+          - test-py313
           - test-py313
     steps:
       - uses: actions/checkout@v4
