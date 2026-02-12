@@ -1,15 +1,10 @@
-from pathlib import Path
+# def download_repressilator():
+#     file = Path("repressilator.sbml")
+#     if file.exists():
+#         return
 
-import biomodels
-
-
-def download_repressilator():
-    file = Path("repressilator.sbml")
-    if file.exists():
-        return
-
-    omex = biomodels.get_omex("BIOMD12")
-    file.write_bytes(omex.master.read_bytes())
+#     omex = biomodels.get_omex("BIOMD12")
+#     file.write_bytes(omex.master.read_bytes())
 
 
 def setup_readme():
@@ -28,5 +23,5 @@ def setup_readme():
                     out.write(line)
 
 
-download_repressilator()
+# download_repressilator() # TODO re-add once IO is fixed
 setup_readme()
