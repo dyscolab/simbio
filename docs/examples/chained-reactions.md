@@ -1,15 +1,6 @@
----
-jupytext:
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.14.0
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
+______________________________________________________________________
+
+## jupytext: text_representation: extension: .md format_name: myst format_version: 0.13 jupytext_version: 1.14.0 kernelspec: display_name: Python 3 language: python name: python3
 
 # Chained reactions
 
@@ -19,13 +10,13 @@ To showcase the [dynamic or programmatic model creation](../model/dynamic.md),
 we will build a model consisting of a circular chain of $N$ reactions,
 
 $$
-\begin{cases}
-X_1 \rightarrow X_{2} \\
-\ldots \\
-X_i \rightarrow X_{i+1} \\
-\ldots \\
-X_N \rightarrow X_{1}
-\end{cases}
+\\begin{cases}
+X_1 \\rightarrow X\_{2} \\
+\\ldots \\
+X_i \\rightarrow X\_{i+1} \\
+\\ldots \\
+X_N \\rightarrow X\_{1}
+\\end{cases}
 $$
 
 and simulate it for different values of $N$.

@@ -1,9 +1,10 @@
 from __future__ import annotations
+
 from ..core import (
-    System,
     MassAction,
     Parameter,
     Reactant,
+    System,
     assign,
     reaction_initial,
 )

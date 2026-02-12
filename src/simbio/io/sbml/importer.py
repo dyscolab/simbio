@@ -9,9 +9,7 @@ from typing import Callable, Mapping, Sequence, TypeVar
 import libsbml
 import pint
 from poincare.compile import depends_on_at_least_one_variable_or_time
-from symbolite import Real
-from symbolite.abstract import real
-from symbolite import substitute
+from symbolite import Real, substitute
 
 from ... import (
     Compartment,
@@ -303,11 +301,11 @@ class SBMLImporter:
             for p in kinetic_law.parameters:
                 new_id = f"{r.id}__{p.id}"
                 self.add_parameter(replace(p, id=new_id))
-                mapping[p.id] = MathMLSymbol(new_id)
-            formula = substitute_by_name(
-                formula, **mapping
-            )  # TODO: replace substitute by name
-        formula = substitute(formula, GetAsVariable(self.get))
+                mapping[p.id] = MathMLSymbol(new_id)  # TODO: replace substitute by name
+            # formula = substitute_by_name(
+            #     formula, **mapping
+            # )
+        # formula = substitute(formula, GetAsVariable(self.get))
 
         self.simbio.add(
             r.id,

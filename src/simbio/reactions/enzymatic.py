@@ -1,11 +1,8 @@
-from poincare.types import EquationGroup
-from symbolite import Real
-
 from ..core import (
-    System,
     Parameter,
     RateLaw,
     Reactant,
+    System,
     assign,
     reaction_initial,
 )

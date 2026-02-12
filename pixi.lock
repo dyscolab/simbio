@@ -4676,7 +4676,7 @@ packages:
   - python *
   license: MIT
   input:
-    hash: e60fd37da54a84ec9418f6791c9896336ef1c8a2adf40efaa30d6922055c3763
+    hash: 28495034425f1e4cd22939729b6bed6a8f53710498c949a934446559d3b39aec
     globs:
     - pyproject.toml
 - pypi: https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl

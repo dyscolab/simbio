@@ -1,23 +1,11 @@
 import numpy as np
 from pytest import mark
 
-import inspect
-
-from poincare.types import EquationGroup
 from ..core import (
-    System,
-    Parameter,
-    RateLaw,
-    MassAction,
     Simulator,
-    Variable,
-    assign,
-    initial,
-    reaction_initial,
+    System,
 )
-
 from ..reactions import compound, enzymatic, single
-
 
 reactions = []
 for mod in (single, compound, enzymatic):

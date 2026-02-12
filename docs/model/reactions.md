@@ -1,15 +1,6 @@
----
-jupytext:
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.14.0
-kernelspec:
-  display_name: Python 3.10.6 64-bit ('simbio')
-  language: python
-  name: python3
----
+______________________________________________________________________
+
+## jupytext: text_representation: extension: .md format_name: myst format_version: 0.13 jupytext_version: 1.14.0 kernelspec: display_name: Python 3.10.6 64-bit ('simbio') language: python name: python3
 
 # Defining new reactions
 
@@ -32,17 +23,17 @@ There are two main types of reactions,
 A `SingleReaction`
 converting species $A$ and $B$ to $C$,
 
-$$ n_A A + n_B B \xrightarrow{k} n_C C $$
+$$ n_A A + n_B B \\xrightarrow{k} n_C C $$
 
 where $n_A$, $n_B$, and $n_C$ are the stoichiometric coefficients,
 corresponds to the following differential equations:
 
 $$
-\begin{cases}
-\frac{dA}{dt} = -n_A \; R(t, A^{n_A}, B^{n_B}, k) \\
-\frac{dB}{dt} = -n_B \; R(t, A^{n_A}, B^{n_B}, k) \\
-\frac{dC}{dt} = +n_C \; R(t, A^{n_A}, B^{n_B}, k)
-\end{cases}
+\\begin{cases}
+\\frac{dA}{dt} = -n_A ; R(t, A^{n_A}, B^{n_B}, k) \\
+\\frac{dB}{dt} = -n_B ; R(t, A^{n_A}, B^{n_B}, k) \\
+\\frac{dC}{dt} = +n_C ; R(t, A^{n_A}, B^{n_B}, k)
+\\end{cases}
 $$
 
 where $R(t, A, B, k)$ is the reaction rate.
@@ -59,7 +50,7 @@ $$ S + E ↔ ES → P + E $$
 where an enzyme $E$ converts a substrate $S$ to a product $P$,
 under certain assumptions can be modeled as a single-step reaction with rate:
 
-$$ R(t, S, V_{max}, K_M) = V_{max} * S / (K_M + S) $$
+$$ R(t, S, V\_{max}, K_M) = V\_{max} * S / (K_M + S) $$
 
 To define a `SingleReaction`,
 we need to declare the species and parameters it relates,

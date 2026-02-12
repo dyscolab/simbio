@@ -12,7 +12,7 @@
               <br/>
               Run this model online at          <a href="http://jjj.biochem.sun.ac.za/">http://jjj.biochem.sun.ac.za</a>
               <br/>
-              To cite JWS Online please refer to: Olivier, B.G. and Snoep, J.L. (2004)          <a href="http://bioinformatics.oupjournals.org/cgi/content/abstract/20/13/2143">Web-based 
+              To cite JWS Online please refer to: Olivier, B.G. and Snoep, J.L. (2004)          <a href="http://bioinformatics.oupjournals.org/cgi/content/abstract/20/13/2143">Web-based
 modelling using JWS Online</a>
               , Bioinformatics, 20:2143-2144          </b>
             </font>
@@ -97,7 +97,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:hasProperty>
 	</rdf:Description>
-	
+
       </rdf:RDF>
     </annotation>
       <listOfUnitDefinitions>
@@ -143,7 +143,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </compartment>
@@ -157,7 +157,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </compartment>
@@ -174,7 +174,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -193,7 +193,7 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:4167"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:17234"/>
@@ -201,7 +201,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -216,7 +216,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -231,7 +231,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -251,14 +251,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:15946"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:15946"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -273,7 +273,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -288,7 +288,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -303,7 +303,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -318,7 +318,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -333,7 +333,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -348,7 +348,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -363,7 +363,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -378,7 +378,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -393,7 +393,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -408,7 +408,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -423,7 +423,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -438,7 +438,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -453,7 +453,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
             </species>
@@ -469,7 +469,7 @@ modelling using JWS Online</a>
     </listOfParameters>
     <listOfRules>
       <assignmentRule metaid="metaid_0000074" variable="catp">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <minus/>
             <cn> 4.27 </cn>
@@ -503,7 +503,7 @@ modelling using JWS Online</a>
         </math>
             </assignmentRule>
       <assignmentRule metaid="metaid_0000082" variable="cadp">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <plus/>
             <cn> 0.582 </cn>
@@ -541,7 +541,7 @@ modelling using JWS Online</a>
         </math>
             </assignmentRule>
       <assignmentRule metaid="metaid_0000083" variable="camp">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <plus/>
             <cn> 0.123 </cn>
@@ -588,7 +588,7 @@ modelling using JWS Online</a>
         </math>
             </assignmentRule>
       <assignmentRule metaid="metaid_0000084" variable="cnadph">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <plus/>
             <cn> 0.062 </cn>
@@ -672,7 +672,7 @@ modelling using JWS Online</a>
         </math>
             </assignmentRule>
       <assignmentRule metaid="metaid_0000085" variable="cnadp">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <plus/>
             <apply>
@@ -725,7 +725,7 @@ modelling using JWS Online</a>
         </math>
             </assignmentRule>
       <assignmentRule metaid="metaid_0000086" variable="cnadh">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <plus/>
             <cn> 0.0934 </cn>
@@ -763,7 +763,7 @@ modelling using JWS Online</a>
         </math>
             </assignmentRule>
       <assignmentRule metaid="metaid_0000087" variable="cnad">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <minus/>
             <apply>
@@ -831,7 +831,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:is>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -843,7 +843,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_515244" species="cpyr" stoichiometry="65"/>
         </listOfProducts>
         <kineticLaw metaid="_515256">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -926,7 +926,7 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00771"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/5.3.1.9"/>
@@ -934,7 +934,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -947,7 +947,7 @@ modelling using JWS Online</a>
           <modifierSpeciesReference metaid="_515364" species="cpg"/>
         </listOfModifiers>
         <kineticLaw metaid="_515376">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -1024,14 +1024,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00959"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/5.4.2.2"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -1041,7 +1041,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_515473" species="cg1p"/>
         </listOfProducts>
         <kineticLaw metaid="_515485">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -1095,7 +1095,7 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R02035"/>
 	</rdf:Bag>
 	</bqbiol:hasPart>
-	
+
 	<bqbiol:hasPart>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/1.1.1.49"/>
@@ -1103,7 +1103,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:hasPart>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -1113,7 +1113,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_515557" species="cpg"/>
         </listOfProducts>
         <kineticLaw metaid="_515569">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -1182,14 +1182,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00756"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/2.7.1.11"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -1202,7 +1202,7 @@ modelling using JWS Online</a>
           <modifierSpeciesReference metaid="_515665" species="cpep"/>
         </listOfModifiers>
         <kineticLaw metaid="_515677">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -1367,14 +1367,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01827"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/2.2.1.2"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -1386,7 +1386,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_515858" species="ce4p"/>
         </listOfProducts>
         <kineticLaw metaid="_515870">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -1430,14 +1430,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01641"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/2.2.1.1"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -1449,7 +1449,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_515942" species="csed7p"/>
         </listOfProducts>
         <kineticLaw metaid="_515954">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -1493,14 +1493,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01067"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/2.2.1.1"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -1512,7 +1512,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_516027" species="cf6p"/>
         </listOfProducts>
         <kineticLaw metaid="_516039">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -1552,14 +1552,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_516075" species="cf6p" stoichiometry="2"/>
         </listOfReactants>
         <kineticLaw metaid="_516087">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -1585,14 +1585,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01070"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/4.1.2.13"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -1603,7 +1603,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_516135" species="cgap"/>
         </listOfProducts>
         <kineticLaw metaid="_516147">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -1704,14 +1704,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01061"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/1.2.1.12"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -1721,7 +1721,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_516255" species="cpgp"/>
         </listOfProducts>
         <kineticLaw metaid="_516267">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -1809,14 +1809,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01015"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/5.3.1.1"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -1826,7 +1826,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_516363" species="cgap"/>
         </listOfProducts>
         <kineticLaw metaid="_516375">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -1880,7 +1880,7 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfProducts>
@@ -1888,7 +1888,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_516447" species="cgap"/>
         </listOfProducts>
         <kineticLaw metaid="_516459">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -1914,21 +1914,21 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00842"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/1.1.1.8"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_516483" species="cdhap"/>
         </listOfReactants>
         <kineticLaw metaid="_516495">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -1964,14 +1964,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01512"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/2.7.2.3"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -1981,7 +1981,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_516543" species="cpg3"/>
         </listOfProducts>
         <kineticLaw metaid="_516555">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2065,14 +2065,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_516640" species="cpg3"/>
         </listOfReactants>
         <kineticLaw metaid="_516652">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2108,14 +2108,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01518"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/5.4.2.1"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -2125,7 +2125,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_516700" species="cpg2"/>
         </listOfProducts>
         <kineticLaw metaid="_516712">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2183,14 +2183,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00658"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/4.2.1.11"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -2200,7 +2200,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_516784" species="cpep"/>
         </listOfProducts>
         <kineticLaw metaid="_516796">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2258,14 +2258,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00200"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/2.7.1.40"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -2278,7 +2278,7 @@ modelling using JWS Online</a>
           <modifierSpeciesReference metaid="_516880" species="cfdp"/>
         </listOfModifiers>
         <kineticLaw metaid="_516892">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2387,14 +2387,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00345"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/4.1.1.31"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -2404,7 +2404,7 @@ modelling using JWS Online</a>
           <modifierSpeciesReference metaid="_517012" species="cfdp"/>
         </listOfModifiers>
         <kineticLaw metaid="_517024">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2451,14 +2451,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517085" species="cpep"/>
         </listOfReactants>
         <kineticLaw metaid="_517097">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2492,14 +2492,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:hasPart>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517133" species="cpyr"/>
         </listOfReactants>
         <kineticLaw metaid="_517145">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2530,14 +2530,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01826"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/2.5.1.54"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -2545,7 +2545,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_517194" species="cpep"/>
         </listOfReactants>
         <kineticLaw metaid="_517207">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2609,21 +2609,21 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00209"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isPartOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.pathway/rn00620"/>
 	</rdf:Bag>
 	</bqbiol:isPartOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517280" species="cpyr"/>
         </listOfReactants>
         <kineticLaw metaid="_517295">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2664,14 +2664,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfProducts>
           <speciesReference metaid="_517343" species="cpyr"/>
         </listOfProducts>
         <kineticLaw metaid="_517355">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -2697,14 +2697,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01528"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isHomologTo>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/reactome/REACT_611"/>
 	</rdf:Bag>
 	</bqbiol:isHomologTo>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -2714,7 +2714,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_517391" species="cribu5p"/>
         </listOfProducts>
         <kineticLaw metaid="_517403">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2783,14 +2783,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01056"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isHomologTo>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/reactome/REACT_6907"/>
 	</rdf:Bag>
 	</bqbiol:isHomologTo>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -2800,7 +2800,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_517488" species="crib5p"/>
         </listOfProducts>
         <kineticLaw metaid="_517500">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -2836,14 +2836,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/5.1.3.1"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
-	
+
 	<bqbiol:isHomologTo>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/reactome/REACT_1522"/>
 	</rdf:Bag>
 	</bqbiol:isHomologTo>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -2853,7 +2853,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_517549" species="cxyl5p"/>
         </listOfProducts>
         <kineticLaw metaid="_517561">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -2889,21 +2889,21 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/2.7.6.1"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
-	
+
 	<bqbiol:isHomologTo>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/reactome/REACT_2023"/>
 	</rdf:Bag>
 	</bqbiol:isHomologTo>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517598" species="crib5p"/>
         </listOfReactants>
         <kineticLaw metaid="_517611">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -2934,14 +2934,14 @@ modelling using JWS Online</a>
 	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00948"/>
 	</rdf:Bag>
 	</bqbiol:is>
-	
+
 	<bqbiol:isVersionOf>
 	<rdf:Bag>
 	<rdf:li rdf:resource="http://identifiers.org/ec-code/2.7.7.27"/>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
@@ -2951,7 +2951,7 @@ modelling using JWS Online</a>
           <modifierSpeciesReference metaid="_517659" species="cfdp"/>
         </listOfModifiers>
         <kineticLaw metaid="_517671">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <divide/>
               <apply>
@@ -3008,14 +3008,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517743" species="cg6p"/>
         </listOfReactants>
         <kineticLaw metaid="_517755">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3038,14 +3038,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517779" species="cf6p"/>
         </listOfReactants>
         <kineticLaw metaid="_517791">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3068,14 +3068,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517815" species="cfdp"/>
         </listOfReactants>
         <kineticLaw metaid="_517827">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3098,14 +3098,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517851" species="cgap"/>
         </listOfReactants>
         <kineticLaw metaid="_517863">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3128,14 +3128,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517888" species="cdhap"/>
         </listOfReactants>
         <kineticLaw metaid="_517901">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3158,14 +3158,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517925" species="cpgp"/>
         </listOfReactants>
         <kineticLaw metaid="_517937">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3188,14 +3188,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517961" species="cpg3"/>
         </listOfReactants>
         <kineticLaw metaid="_517973">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3218,14 +3218,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_517997" species="cpg2"/>
         </listOfReactants>
         <kineticLaw metaid="_518009">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3248,14 +3248,14 @@ modelling using JWS Online</a>
 	</rdf:Bag>
 	</bqbiol:isVersionOf>
 	</rdf:Description>
-	
+
           </rdf:RDF>
         </annotation>
               <listOfReactants>
           <speciesReference metaid="_518033" species="cpep"/>
         </listOfReactants>
         <kineticLaw metaid="_518045">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3273,7 +3273,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_518069" species="cribu5p"/>
         </listOfReactants>
         <kineticLaw metaid="_518081">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3291,7 +3291,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_518105" species="crib5p"/>
         </listOfReactants>
         <kineticLaw metaid="_518117">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3309,7 +3309,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_518141" species="cxyl5p"/>
         </listOfReactants>
         <kineticLaw metaid="_518153">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3327,7 +3327,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_518178" species="csed7p"/>
         </listOfReactants>
         <kineticLaw metaid="_518190">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3345,7 +3345,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_518216" species="cpyr"/>
         </listOfReactants>
         <kineticLaw metaid="_518229">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3363,7 +3363,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_518255" species="cpg"/>
         </listOfReactants>
         <kineticLaw metaid="_518267">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3381,7 +3381,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_518291" species="ce4p"/>
         </listOfReactants>
         <kineticLaw metaid="_518304">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3399,7 +3399,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_518330" species="cg1p"/>
         </listOfReactants>
         <kineticLaw metaid="_518343">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> cytosol </ci>
@@ -3417,7 +3417,7 @@ modelling using JWS Online</a>
           <speciesReference metaid="_518369" species="cglcex"/>
         </listOfProducts>
         <kineticLaw metaid="_518382">
-          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> extracellular </ci>

@@ -8,18 +8,10 @@ from typing import (
 from poincare import (
     Derivative,
     Variable,
-    Simulator,
-    Parameter,
-    assign,
-    initial,
 )
 from poincare._node import Node, NodeMapper
 from poincare.reactions import (
     Reactant,
-    RateLaw,
-    MassAction,
-    reaction_initial,
-    AbsoluteRateLaw,
 )
 from poincare.reactions.reactions import (
     compensate_volume,

@@ -74,7 +74,7 @@ backend = { name = "pixi-build-python", version = "0.4.*" }
 uv-build = "*"
 
 [tool.pixi.package.run-dependencies]
-# poincare = "*"
+# poincare = ">=1.0.0b2"
 
 [tool.pixi.environments]
 default = ["test", "py312"]

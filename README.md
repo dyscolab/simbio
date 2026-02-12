@@ -16,7 +16,7 @@ to add functionality for CRNs.
 ## Usage
 
 To create a system with two species $A$ and $B$
-and a reaction converting $2A \rightarrow B$ with rate 1:
+and a reaction converting $2A \\rightarrow B$ with rate 1:
 
 ```python
 >>> from simbio import Compartment, Species, RateLaw, initial
