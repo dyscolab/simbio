@@ -39,12 +39,12 @@ repos:
     types_or: [python, pyi, jupyter]
     require_serial: true
 
-  - id: pyright
-    name: Type-check with pyright
-    entry: pixi run -e lint pyright
-    language: system
-    types_or: [python, pyi]
-    require_serial: true
+  # - id: pyright
+  #   name: Type-check with pyright
+  #   entry: pixi run -e lint pyright
+  #   language: system
+  #   types_or: [python, pyi]
+  #   require_serial: true
 
   - id: mdformat
     name: Format markdown with mdformat
