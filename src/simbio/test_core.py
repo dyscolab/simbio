@@ -10,9 +10,10 @@ from . import (
     Simulator,
     Species,
     assign,
+    Reactant,
+    reaction_initial,
 )
 from .core import (
-    Reactant,
     Volume,
     amount,
     compensate_volume,
@@ -20,7 +21,6 @@ from .core import (
     make_concentration,
     reaction_amount,
     reaction_concentration,
-    reaction_initial,
     volume,
 )
 
@@ -292,8 +292,8 @@ def test_nested_compartments():
     sim.solve(save_at=np.linspace(0, 10, 10))
 
     assert Model.A and Model.nested.A in sim.compiled.variables
-    assert Model._volume == Model.V
-    assert Model.nested._volume == Model.nested.V
+    assert Model._simbio_volume == Model.V
+    assert Model.nested._simbio_volume == Model.nested.V
 
 
 def test_species_in_reactant():

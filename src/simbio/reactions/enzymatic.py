@@ -1,4 +1,4 @@
-from ..core import (
+from .. import (
     Parameter,
     RateLaw,
     Reactant,

@@ -94,9 +94,9 @@ def compensate_volume_Species(
     system_parent = first_system_parent(species)
     if is_instance_or_subclass(system_parent, Compartment):
         if species.concentration and not reaction_is_concentration:
-            return rhs / system_parent._volume
+            return rhs / system_parent._simbio_volume
         elif not species.concentration and reaction_is_concentration:
-            return rhs * system_parent._volume
+            return rhs * system_parent._simbio_volume
         else:
             return rhs
     else:
@@ -110,9 +110,9 @@ def make_concentration_Species(species: Species) -> Real | Initial:
         is_instance_or_subclass(system_parent, Compartment)
     ):
         try:
-            return species / system_parent._volume
+            return species / system_parent._simbio_volume
         except AttributeError as err:
-            if not hasattr(system_parent, "_volume"):
+            if not hasattr(system_parent, "_simbio_volume"):
                 raise AttributeError("Compartments must have a Volume")
             else:
                 raise err
@@ -141,7 +141,7 @@ class Volume(Variable):
     def __set_name__(self, cls: Node, name: str):
         super().__set_name__(cls, name)
         if cls is not None:
-            setattr(cls, "_volume", self)
+            setattr(cls, "_simbio_volume", self)
 
 
 class Compartment(System, abstract=True):

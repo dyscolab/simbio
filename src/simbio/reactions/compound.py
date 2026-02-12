@@ -10,7 +10,7 @@ A reaction connects species to their rate of change.
 
 from __future__ import annotations
 
-from ..core import Parameter, Reactant, System, assign, reaction_initial
+from .. import Parameter, Reactant, System, assign, reaction_initial
 from .single import Conversion, Dissociation, Synthesis
 
 

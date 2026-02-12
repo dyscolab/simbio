@@ -1,7 +1,7 @@
 import numpy as np
 from pytest import mark
 
-from ..core import (
+from .. import (
     Simulator,
     System,
 )

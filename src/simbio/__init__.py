@@ -1,18 +1,24 @@
-from poincare import Constant, Independent
-
-from .core import (
-    AbsoluteRateLaw,
-    Compartment,
-    MassAction,
-    Parameter,
-    RateLaw,
-    Reactant,
-    Simulator,
-    Species,
-    System,
+from poincare import (
+    Constant,
+    Independent,
     Variable,
+    Simulator,
+    Parameter,
     assign,
     initial,
+)
+from poincare.reactions import (
+    Reactant,
+    RateLaw,
+    MassAction,
+    reaction_initial,
+    AbsoluteRateLaw,
+)
+
+from .core import (
+    Compartment,
+    Species,
+    System,
     reaction_amount,
     reaction_concentration,
 )

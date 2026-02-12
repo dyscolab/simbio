@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ..core import (
+from .. import (
     MassAction,
     Parameter,
     Reactant,
