@@ -1,7 +1,7 @@
 [project]
 name = "simbio"
 description = "A Python-based package for simulation of Chemical Reaction Networks (CRNs)."
-version = "1.0.0b2"
+version = "1.0.0b3"
 authors = [
   { name = "Hernán E. Grecco", email = "hernan.grecco@gmail.com" },
   { name = "Mauro Silberberg", email = "maurosilber@gmail.com" },
