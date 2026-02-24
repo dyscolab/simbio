@@ -4668,7 +4668,7 @@ packages:
   timestamp: 1769601206751
 - conda: .
   name: simbio
-  version: 1.0.0b1
+  version: 1.0.0b2
   build: pyh4616a5c_0
   subdir: noarch
   depends:
@@ -4676,7 +4676,7 @@ packages:
   - python *
   license: MIT
   input:
-    hash: 77b679cb311177089aeb531109b7eeb557e572c1730a4538df447200e9c310d4
+    hash: 22a15dfc8b9e8e1a48d12d374a483c9bf1dbfaf50d4a2aebc8f3e1e6a1977507
     globs:
     - pyproject.toml
 - pypi: https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl
