@@ -1,7 +1,7 @@
 [project]
 name = "simbio"
 description = "A Python-based package for simulation of Chemical Reaction Networks (CRNs)."
-version = "1.0.0b0"
+version = "1.0.0b1"
 authors = [
   { name = "Hernán E. Grecco", email = "hernan.grecco@gmail.com" },
   { name = "Mauro Silberberg", email = "maurosilber@gmail.com" },
@@ -26,7 +26,7 @@ keywords = [
   "poincare",
 ]
 requires-python = ">=3.12"
-dependencies = ["poincare >= 1.0.0b2"]
+dependencies = ["poincare >= 1.0.0b3"]
 
 [project.urls]
 homepage = "https://github.com/dyscolab/simbio"
