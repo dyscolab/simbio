@@ -186,7 +186,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/0d/76/941cc9f73529988688a665a5c0ecff1112b3d95ab48f81db5f7606f522d3/pydantic_core-2.41.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -251,7 +251,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/aa/32/9c2e8ccb57c01111e0fd091f236c7b371c1bccea0fa85247ac55b1e2b6b6/pydantic_core-2.41.5-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -317,7 +317,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/86/45/00173a033c801cacf67c190fef088789394feaf88a98a7035b0e40d53dc9/pydantic_core-2.41.5-cp312-cp312-win_amd64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -563,7 +563,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/0d/76/941cc9f73529988688a665a5c0ecff1112b3d95ab48f81db5f7606f522d3/pydantic_core-2.41.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -628,7 +628,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/aa/32/9c2e8ccb57c01111e0fd091f236c7b371c1bccea0fa85247ac55b1e2b6b6/pydantic_core-2.41.5-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -694,7 +694,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/86/45/00173a033c801cacf67c190fef088789394feaf88a98a7035b0e40d53dc9/pydantic_core-2.41.5-cp312-cp312-win_amd64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -773,7 +773,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/cf/4e/35a80cae583a37cf15604b44240e45c05e04e86f9cfd766623149297e971/pydantic_core-2.41.5-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -839,7 +839,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/94/02/abfa0e0bda67faa65fef1c84971c7e45928e108fe24333c81f3bfe35d5f5/pydantic_core-2.41.5-cp313-cp313-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -906,7 +906,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/9e/8b/341991b158ddab181cff136acd2552c9f35bd30380422a639c0671e99a91/pydantic_core-2.41.5-cp313-cp313-win_amd64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -985,7 +985,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/4c/d2/ef2074dc020dd6e109611a8be4449b98cd25e1b9b8a303c2f0fca2f2bcf7/pydantic_core-2.41.5-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -1051,7 +1051,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/74/1a/145646e5687e8d9a1e8d09acb278c8535ebe9e972e1f162ed338a622f193/pydantic_core-2.41.5-cp314-cp314-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -1118,7 +1118,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/ab/88/550d41e81e6d43335603a960cd9c75c1d88f9cf01bc9d4ee8e86290aba7d/pint-0.25.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/19/5af93cae70c2e42f3ac568906f8f3909174450bdbf4d70ec420e1daef816/Pint_Pandas-0.7.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/23/12/0e888c6c114589d8d32d30525d77dbf9cd5c2811a37bfa61748bf412ed6d/pint_xarray-0.6.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/48/5d/56ba7b24e9557f99c9237e29f5c09913c81eeb2f3217e40e922353668092/pydantic_core-2.41.5-cp314-cp314-win_amd64.whl
       - pypi: https://files.pythonhosted.org/packages/8e/cd/6a9174b5a432ef4f49e271418104b62a0da2881cc6dfc6b73dd20498931e/pydantic_xml-2.18.0-py3-none-any.whl
@@ -3497,10 +3497,10 @@ packages:
   - pkg:pypi/pluggy?source=compressed-mapping
   size: 25877
   timestamp: 1764896838868
-- pypi: https://files.pythonhosted.org/packages/bd/af/bbd56bfd9ba0c4019c230746c44fe360cab16885ea54224520ed9ff1ce3f/poincare-1.0.0b3-py3-none-any.whl
+- pypi: https://files.pythonhosted.org/packages/0e/2b/0321cbe34f6327f59ef13e114e932df0a52af3dd389f312e6064819f9392/poincare-1.0.0-py3-none-any.whl
   name: poincare
-  version: 1.0.0b3
-  sha256: 04001528a9fbd085fcff04146ec5e657834fa33596bf2cdca54d9f39c5d5381d
+  version: 1.0.0
+  sha256: 3e407bec06e19f47e70619a9ef990aeb759c0d327c3665d732baf92a747a7032
   requires_dist:
   - numpy
   - pandas
@@ -4668,7 +4668,7 @@ packages:
   timestamp: 1769601206751
 - conda: .
   name: simbio
-  version: 1.0.0b3
+  version: 1.0.0
   build: pyh4616a5c_0
   subdir: noarch
   depends:
@@ -4676,7 +4676,7 @@ packages:
   - python *
   license: MIT
   input:
-    hash: 861295469795281fcd795e99628f7ef2ce0e9352fc9c3b75b01bd1a9d8140c84
+    hash: ec1564439712526d3f0641326ff6a05831ff01d7975b0b5c7670019ed91c005d
     globs:
     - pyproject.toml
 - pypi: https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl
