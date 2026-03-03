@@ -19,10 +19,12 @@ from .core import (
     Compartment,
     Species,
     System,
+    Volume,
     amount,
     concentration,
     reaction_amount,
     reaction_concentration,
+    volume,
 )
 
 __all__ = [
@@ -31,11 +33,13 @@ __all__ = [
     "assign",
 ]
 __all__ += [
+    "Simulator",
     "Compartment",
     "System",
     "Variable",
     "Reactant",
     "Species",
+    "Volume",
     "Parameter",
     "MassAction",
     "RateLaw",
@@ -46,5 +50,5 @@ __all__ += [
     "reaction_initial",
     "reaction_concentration",
     "reaction_amount",
-    "Simulator",
+    "volume",
 ]
