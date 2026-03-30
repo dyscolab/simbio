@@ -6,6 +6,7 @@ from poincare import (
     Variable,
     assign,
     initial,
+    model_report,
 )
 from poincare.reactions import (
     AbsoluteRateLaw,
@@ -51,4 +52,5 @@ __all__ += [
     "reaction_concentration",
     "reaction_amount",
     "volume",
+    "model_report",
 ]
