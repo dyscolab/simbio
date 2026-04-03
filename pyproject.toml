@@ -1,7 +1,7 @@
 [project]
 name = "simbio"
 description = "A Python-based package for simulation of Chemical Reaction Networks (CRNs)."
-version = "1.0.1"
+version = "1.1.0"
 authors = [
   { name = "Hernán E. Grecco", email = "hernan.grecco@gmail.com" },
   { name = "Mauro Silberberg", email = "maurosilber@gmail.com" },
@@ -26,7 +26,7 @@ keywords = [
   "poincare",
 ]
 requires-python = ">=3.12"
-dependencies = ["poincare >= 1.0.0"]
+dependencies = ["poincare >= 1.1.0"]
 
 [project.urls]
 homepage = "https://github.com/dyscolab/simbio"
@@ -69,7 +69,13 @@ preview = ["pixi-build"]
 
 [tool.pixi.package.build]
 backend = { name = "pixi-build-python", version = "0.4.*" }
-config = { ignore-pypi-mapping = false }                    # Enable automatic PyPI-to-conda mapping
+# config = { ignore-pypi-mapping = false }                    # Enable automatic PyPI-to-conda mapping
+
+[tool.pixi.package.host-dependencies]
+uv-build = "*"
+
+[tool.pixi.package.run-dependencies]
+# poincare = ">=1.0.0"
 
 [tool.pixi.environments]
 default = ["test", "py312"]
