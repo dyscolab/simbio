@@ -68,7 +68,7 @@ platforms = ["linux-64", "osx-arm64", "win-64"]
 preview = ["pixi-build"]
 
 [tool.pixi.package.build]
-backend = { name = "pixi-build-python", version = "0.4.*" }
+backend = { name = "pixi-build-python", version = "*" }
 # config = { ignore-pypi-mapping = false }                    # Enable automatic PyPI-to-conda mapping
 
 [tool.pixi.package.host-dependencies]
