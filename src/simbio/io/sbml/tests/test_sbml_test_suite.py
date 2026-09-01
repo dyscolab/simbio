@@ -1,7 +1,7 @@
 import zipfile
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
+from collections.abc import Iterable
 
 import numpy as np
 import pandas as pd
@@ -138,6 +138,7 @@ def test_running(model_id):
         raise e
     except KeyError:
         xfail("dependency solving error")
+
 
     df_expected = loader.read_results()
     assert_frame_equal(
