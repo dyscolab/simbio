@@ -2,7 +2,7 @@ import math
 
 from pytest import mark, param, raises
 
-from ...core import Parameter, Species
+from ... import Parameter, Variable
 from . import types
 from .importer import convert, nan_to_none
 
@@ -36,7 +36,7 @@ def test_parameter(value, units, constant):
 @mark.parametrize("boundary_condition", [False, True])
 @mark.parametrize("constant", [False, True])
 @mark.parametrize("conversion_factor", [None])
-def test_species(
+def test_variable(
     initial_amount,
     initial_concentration,
     substance_units,
@@ -71,7 +71,7 @@ def test_species(
     else:
         compartment = convert(model, name="model")
         s = getattr(compartment, name)
-        assert isinstance(s, Species)
+        from ... import Variable
         if initial_amount is None:
             assert s.initial == initial_concentration
         else:

@@ -45,7 +45,7 @@ tags = {
     "minus": partial(star_reduce, real.sub),
     "times": partial(star_reduce, real.mul),
     "divide": partial(star_reduce, real.truediv),
-    "power": real.pow,
+    "power": real.pow_op, # TODO: should this be pow_op (operator) or pow (binary function)
     "root": NotImplemented,
     "abs": real.abs,
     "exp": real.exp,

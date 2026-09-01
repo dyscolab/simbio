@@ -4,9 +4,11 @@ from collections import ChainMap
 
 import libsbml
 from libsbml import ASTNode
-from symbolite import Real
+from symbolite.core.symbolite_object import get_symbolite_info
+from symbolite.core.value import Value
 from symbolite.abstract import real
-from symbolite.core import as_function
+import symbolite.abstract as abstract
+from symbolite.impl.libpythoncode._codeexpr import as_function
 
 from .symbol import MathMLSpecialSymbol, MathMLSymbol
 
@@ -41,7 +43,7 @@ def root(*args):
         case (arg,) | (2, arg):
             return real.sqrt(arg)
         case (exp, arg):
-            return real.pow(arg, real.truediv(1, exp))
+            return real.pow_op(arg, real.truediv(1, exp))
         case _:
             raise TypeError(f"unexpected number of arguments: {len(args)}")
 
@@ -66,7 +68,7 @@ mapper = {
     libsbml.AST_MINUS: minus,
     libsbml.AST_TIMES: real.mul,
     libsbml.AST_DIVIDE: real.truediv,
-    libsbml.AST_POWER: real.pow,
+    libsbml.AST_POWER: real.pow_op,
     libsbml.AST_INTEGER: get_value(int),
     libsbml.AST_REAL: get_value(float),
     libsbml.AST_REAL_E: get_value(float),
@@ -246,8 +248,8 @@ class mathMLImporter:
     def compile_function(self, func_name: str, node: libsbml.ASTNode):
         *params, body = self.yield_children(node)
 
-        if any(keyword.iskeyword(p.name) for p in params):
-            name_mapping = {p.name: p for p in params}
+        if any(keyword.iskeyword(get_symbolite_name(p)) for p in params):
+            name_mapping = {get_symbolite_name(p): p for p in params}
             for name in filter(keyword.iskeyword, name_mapping):
                 new_name = name
                 while new_name in name_mapping:
@@ -267,3 +269,11 @@ class mathMLImporter:
             self.mapper[libsbml.AST_FUNCTION] = {}
 
         self.mapper[libsbml.AST_FUNCTION][name] = func
+
+
+def get_symbolite_name(obj: Value) -> str | None:
+    value = get_symbolite_info(obj).value
+    try:
+        return value.name
+    except AttributeError:
+        raise TypeError(f"{obj} does not have name, it's value is a {type(value)}")

@@ -4,27 +4,31 @@ from dataclasses import replace
 from functools import reduce, singledispatchmethod
 from operator import mul
 from os import PathLike
-from typing import Callable, Mapping, Sequence, TypeVar
+from collections.abc import Callable, Mapping, Sequence
+from typing import TypeVar
+from itertools import chain
 
 import libsbml
 import pint
 from poincare.compile import depends_on_at_least_one_variable_or_time
 from symbolite import Real, substitute
+from symbolite.core.value import ValueInfo, Name
 
 from ... import (
-    Compartment,
+    System,
     Constant,
     Independent,
     Parameter,
     RateLaw,
-    Species,
+    Reactant,
     initial,
 )
+from ... import Variable as Species # TODO: handle propperly
 from ..mathML.importer import MathMLSpecialSymbol, MathMLSymbol
 from . import from_libsbml, types
+from .substitute_by_name import substitute_by_name
 
 T = TypeVar("T")
-
 
 class _Namespaces:
     SUPPORTED = {""}
@@ -39,15 +43,15 @@ def nan_to_none(x):
         return x
 
 
-class DynamicCompartment:
+class DynamicSystem:
     def __init__(self, *, name_mapper: Callable[[str], str] = lambda x: x):
         self.name_mapping: dict[str, str] = {}
         self.name_mapper = name_mapper
-        self.namespace = Compartment.__prepare__(None, ())
+        self.namespace = System.__prepare__(None, ())
         self._annotations = self.namespace.setdefault("__annotations__", {})
 
     def build(self, name: str):
-        return type(name, (Compartment,), self.namespace)
+        return type(name, (System,), self.namespace)
 
     def add(self, name: str, value, *, init: bool = True):
         self.name_mapping[name] = new_name = self.name_mapper(name)
@@ -103,7 +107,7 @@ def convert(
     *,
     name: str | None = None,
     identity_mapper: Callable[[str], str] = lambda x: x,
-) -> type[Compartment]:
+) -> type[System]:
     if name is None:
         name = model.name
         if name is None:
@@ -134,7 +138,7 @@ class SBMLImporter:
             raise NotImplementedError("global conversion factor")
 
         self.model = model
-        self.simbio = DynamicCompartment(name_mapper=_extra_check(identity_mapper))
+        self.simbio = DynamicSystem(name_mapper=_extra_check(identity_mapper))
 
         self.use_units = units
         if self.use_units:
@@ -179,11 +183,11 @@ class SBMLImporter:
 
     def get(self, item, default=None):
         match item:
-            case Real(name=None):
+            case Real(__symboilte_info__=ValueInfo(name=None)):
                 return item
-            case MathMLSymbol(name=name):
+            case MathMLSymbol(__symbolite_info__ = ValueInfo(value = Name(name = name))):
                 return getattr(self.simbio, name)
-            case MathMLSpecialSymbol(name=name):
+            case MathMLSpecialSymbol(__symbolite_info__ = ValueInfo(value = Name(name = name))):
                 return self.get_or_create_independent(name)
             case _:
                 return item
@@ -266,13 +270,13 @@ class SBMLImporter:
             raise TypeError(f"unexpected type: {type(value)}")
         return value
 
-    def get_species_reference(self, s: types.SimpleSpeciesReference) -> Species:
+    def get_species_reference(self, s: types.SimpleSpeciesReference) -> Reactant:
         # s.constant: bool
         species = self.get_symbol(s.species, Species)
         if isinstance(s, types.SpeciesReference) and s.stoichiometry is not None:
-            return Species(species, s.stoichiometry)
+            return Reactant(species, s.stoichiometry)
         else:
-            return Species(species)
+            return Reactant(species)
 
     @add.register
     def add_reaction(self, r: types.Reaction):
@@ -301,11 +305,14 @@ class SBMLImporter:
             for p in kinetic_law.parameters:
                 new_id = f"{r.id}__{p.id}"
                 self.add_parameter(replace(p, id=new_id))
-                mapping[p.id] = MathMLSymbol(new_id)  # TODO: replace substitute by name
-            # formula = substitute_by_name(
-            #     formula, **mapping
-            # )
-        # formula = substitute(formula, GetAsVariable(self.get))
+                mapping[p.id] = MathMLSymbol(new_id)  
+            formula = substitute_by_name(
+                formula, **mapping
+            )
+        formula = substitute(formula, GetAsVariable(self.get))
+        rate_law = RateLaw(reactants=reactants, products=products, rate_law=formula)
+        for reactant in chain(rate_law.reactants, rate_law.products):
+            reactant.__set_name__(cls= rate_law,name= reactant.variable.name,)
 
         self.simbio.add(
             r.id,

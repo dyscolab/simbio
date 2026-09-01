@@ -3,6 +3,9 @@ from functools import singledispatch as dispatch
 import libsbml
 from symbolite import Real
 from symbolite.abstract import real
+from symbolite.core.function import BinaryOperator
+from symbolite.core.value import Value, Name
+from symbolite.core.call import Call
 from symbolite.core.symbolite_object import get_symbolite_info
 
 mapper = {
@@ -11,7 +14,7 @@ mapper = {
     real.neg: libsbml.AST_MINUS,
     real.mul: libsbml.AST_TIMES,
     real.truediv: libsbml.AST_DIVIDE,
-    real.pow: libsbml.AST_POWER,
+    real.pow_op: libsbml.AST_POWER,
     "libsbml.AST_INTEGER": libsbml.AST_INTEGER,
     "libsbml.AST_REAL": libsbml.AST_REAL,
     "libsbml.AST_REAL_E": libsbml.AST_REAL_E,
@@ -189,17 +192,26 @@ def float_to_mathML(x: float):
 
 
 @to_mathML.register
-def real_to_mathML(x: Real):
-    if x.expression is None:
+def value_to_mathML(x: Value):
+    value  = get_symbolite_info(x).value
+    if isinstance(value, Name):
         node = libsbml.ASTNode(libsbml.AST_NAME)
         node.setId(str(x))
-        node.setName(get_symbolite_info(x).value.name)
+        node.setName(value.name)
         return node
+    elif isinstance(value, Call):
+        callinfo = get_symbolite_info(value)
+        if len(callinfo.kwargs_items) > 0:
+            raise NotImplementedError("mathML does not support functions with kwargs")
 
-    if len(x.expression.kwargs) > 0:
-        raise NotImplementedError("mathML does not support functions with kwargs")
+        node = libsbml.ASTNode(to_mathML(callinfo.func))
+        for arg in callinfo.args:
+            node.addChild(to_mathML(arg))
+        return node
+    else:
+        return to_mathML(value)
 
-    node = libsbml.ASTNode(to_mathML(x.expression.func))
-    for arg in x.expression.args:
-        node.addChild(to_mathML(arg))
-    return node
+# @to_mathML.register
+# def binop_to_mathML(x: BinaryOperator):
+#     #
+#     raise NotImplementedError(f"got type {type(BinaryOperator)}")

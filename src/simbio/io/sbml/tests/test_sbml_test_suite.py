@@ -125,17 +125,11 @@ def test_running(model_id):
 
     try:
         df = (
-            Simulator(
-                model,
-                transform=[getattr(model, name) for name in settings.variables],
-            )
-            .solve(
-                save_at=save_at,
-                solver=LSODA(
-                    atol=settings.absolute,
-                    rtol=settings.relative,
-                ),
-            )
+            Simulator(model)
+            .with_transform([getattr(model, name) for name in settings.variables])
+            .with_solver(LSODA(atol=settings.absolute, rtol=settings.relative,))
+            .solve(save_at=save_at)
+            .to_dataframe()
             .reset_index()
         )
     except TypeError as e:

@@ -1,16 +1,18 @@
 from typing import assert_never
 
 from networkx import DiGraph, Graph, bipartite
+from poincare.reactions.reactions import RateLaw
 
-from ...core import Compartment, RateLaw, Species
+from ...core import System, Variable
+from ...import RateLaw
 
 
-def graph(model: type[Compartment], /) -> DiGraph:
-    """Construct a directed bipartite graph of Species and Reactions."""
+def graph(model: type[System], /) -> DiGraph:
+    """Construct a directed bipartite graph of Variable and Reactions."""
     g = DiGraph()
-    for x in model._yield(Species | RateLaw):  # type: ignore
+    for x in model._yield(Variable | RateLaw):  # type: ignore
         match x:
-            case Species():
+            case Variable():
                 g.add_node(x)
             case RateLaw():
                 name = str(x)
@@ -24,23 +26,23 @@ def graph(model: type[Compartment], /) -> DiGraph:
     return g
 
 
-def to_species_graph(graph: DiGraph, /) -> Graph:
-    """Project a bipartite graph into the Species graph.
+def to_Variable_graph(graph: DiGraph, /) -> Graph:
+    """Project a bipartite graph into the Variable graph.
 
-    Two Species are connected if they take part in the same Reaction.
+    Two Variable are connected if they take part in the same Reaction.
     """
     return bipartite.projected_graph(
         graph,
-        nodes=[n for n in graph if isinstance(n, Species)],
+        nodes=[n for n in graph if isinstance(n, Variable)],
     )
 
 
 def to_reaction_graph(graph: DiGraph, /) -> Graph:
     """Project a bipartite graph into the Reaction graph.
 
-    Two Reactions are connected if they share a common Species.
+    Two Reactions are connected if they share a common Variable.
     """
     return bipartite.projected_graph(
         graph,
-        nodes=[n for n in graph if not isinstance(n, Species)],
+        nodes=[n for n in graph if not isinstance(n, Variable)],
     )
