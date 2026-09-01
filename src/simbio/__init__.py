@@ -6,7 +6,6 @@ from poincare import (
     Variable,
     assign,
     initial,
-    model_report,
 )
 from poincare.reactions import (
     AbsoluteRateLaw,
@@ -27,6 +26,8 @@ from .core import (
     reaction_concentration,
     volume,
 )
+
+from .latex import model_report
 
 __all__ = [
     "Constant",
