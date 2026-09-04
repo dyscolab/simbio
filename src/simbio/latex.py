@@ -20,15 +20,10 @@ def reactant_to_latex(reactant: Reactant,latex: ToLatex) ->  Latex:
     return f"{reactant.stoichiometry if reactant.stoichiometry != 1 else ""} {substitute(reactant.variable, latex.transform)}"
 
 
-def yield_reactions(model: type[System], latex: ToLatex) -> Iterable[Latex]:
-    for reaction in model._yield(RateLaw):
-        yield reaction_to_latex(reaction=reaction, latex= latex)
-
-
-def aligned_reactions(iterable)-> Latex:
+def aligned_reactions(model: type[System], latex: ToLatex) -> Latex:
     lines = []
     lines.append("\\begin{aligned}")
-    lines.extend(iterable)
+    lines.extend(reaction_to_latex(reaction=reaction, latex= latex) for reaction in model._yield(RateLaw))
     lines.append("\\end{aligned}")
     return "\\\\\n".join(lines)
 
@@ -39,7 +34,7 @@ def latex_reactions(
     if latex is None:
         transform = transform if transform is not None else {}
         latex = ToLatex(model, transform=transform)
-    return "\\[ " + aligned_reactions(yield_reactions(model = model, latex=latex)) + " \\]"
+    return "\\[ " + aligned_reactions(model = model, latex=latex) + " \\]"
 
 
 def model_report(
