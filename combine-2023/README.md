@@ -15,18 +15,20 @@ with the following link:
 
 The recommended option is to use VS Code or some other IDE.
 
-simbio can be installed via `pip`:
+simbio can be installed via `pip` or `uv`:
 
-```
-pip install simbio[io]
-```
-
-but we also provide an `environment.yaml` to create a conda enviroment:
-
-```
-mamba env create -f environment.yaml
+```sh
+uv pip install simbio[io]
 ```
 
-If you are trying to run this well into the future,
-there is an `enviroment.lock.yaml`,
-as the tutorial might not work as is with newer versions of `simbio` or its dependencies.
+We also provide a `pixi.toml` to create a conda enviroment:
+
+```sh
+pixi install
+```
+
+## Render the slides
+
+```sh
+pixi run render
+```
