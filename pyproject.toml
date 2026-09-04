@@ -26,7 +26,7 @@ keywords = [
   "poincare",
 ]
 requires-python = ">=3.12"
-dependencies = ["poincare >= 1.1.0"]
+dependencies = ["poincare >= 1.2.0"]
 
 [project.urls]
 homepage = "https://github.com/dyscolab/simbio"
@@ -63,7 +63,7 @@ project-excludes = [".pixi", "**/__pycache__"]
 python = ".pixi/envs/default"
 
 [tool.pixi.workspace]
-channels = ["https://prefix.dev/conda-forge"]
+channels = ["https://conda.anaconda.org/conda-forge/"]
 platforms = ["linux-64", "osx-arm64", "win-64"]
 preview = ["pixi-build"]
 
