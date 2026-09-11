@@ -1,6 +1,7 @@
 from symbolite import Real
 from symbolite import translate
 from typing import Any
+import types
 
 class MathMLSpecialSymbol(Real):
     pass

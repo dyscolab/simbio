@@ -241,7 +241,7 @@ class mathMLImporter:
         else:
             return func
 
-    def yield_children(self, node: libsbml.ASTNode) -> Real:
+    def yield_children(self, node: libsbml.ASTNode) -> real.Real:
         for i in range(node.getNumChildren()):
             yield self.convert(node.getChild(i))
 
