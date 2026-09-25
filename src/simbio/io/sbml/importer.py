@@ -24,9 +24,9 @@ from ... import (
     initial,
 )
 from ... import Variable as Species # TODO: handle propperly
-from ..mathML.importer import MathMLSpecialSymbol, MathMLSymbol
+from ..mathML.symbol import MathMLSpecialSymbol, MathMLSymbol
 from . import from_libsbml, types
-from .substitute_by_name import substitute_by_name
+from ..substitute_by_name import substitute_by_name
 
 T = TypeVar("T")
 

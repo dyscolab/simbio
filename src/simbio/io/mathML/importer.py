@@ -1,15 +1,13 @@
 import functools
-import keyword
 from collections import ChainMap
 
 import libsbml
 from libsbml import ASTNode
+from symbolite.abstract import real
 from symbolite.core.symbolite_object import get_symbolite_info
 from symbolite.core.value import Value
-from symbolite.abstract import real
-import symbolite.abstract as abstract
-from symbolite.impl.libpythoncode._codeexpr import as_function
 
+from ..substitute_by_name import substitute_by_name
 from .symbol import MathMLSpecialSymbol, MathMLSymbol
 
 
@@ -247,20 +245,32 @@ class mathMLImporter:
 
     def compile_function(self, func_name: str, node: libsbml.ASTNode):
         *params, body = self.yield_children(node)
+        param_names = tuple(get_symbolite_name(p) for p in params)
 
-        if any(keyword.iskeyword(get_symbolite_name(p)) for p in params):
-            name_mapping = {get_symbolite_name(p): p for p in params}
-            for name in filter(keyword.iskeyword, name_mapping):
-                new_name = name
-                while new_name in name_mapping:
-                    new_name = f"_{new_name}"
-                name_mapping[name] = Real(new_name)
-            params = name_mapping.values()
-            body = body.subs_by_name(**name_mapping)
+        def func(*args, **kwargs):
+            if len(args) > len(param_names):
+                raise TypeError(
+                    f"{func_name}() takes {len(param_names)} positional arguments but {len(args)} were given"
+                )
+            mapping = dict(zip(param_names, args))
+            for k, v in kwargs.items():
+                if k in mapping:
+                    raise TypeError(
+                        f"{func_name}() got multiple values for argument {k!r}"
+                    )
+                if k not in param_names:
+                    raise TypeError(
+                        f"{func_name}() got an unexpected keyword argument {k!r}"
+                    )
+                mapping[k] = v
+            if len(mapping) != len(param_names):
+                missing = [p for p in param_names if p not in mapping]
+                raise TypeError(
+                    f"{func_name}() missing {len(missing)} required positional argument(s): {', '.join(missing)}"
+                )
+            return substitute_by_name(body, **mapping)
 
-        func = as_function(
-            body, func_name, tuple(map(str, params)), libsl=abstract
-        )  # TODO: change to new symbolite
+        func.__name__ = func_name
         self.add_function(func_name, func)
         return func
 
@@ -271,9 +281,11 @@ class mathMLImporter:
         self.mapper[libsbml.AST_FUNCTION][name] = func
 
 
-def get_symbolite_name(obj: Value) -> str | None:
-    value = get_symbolite_info(obj).value
+def get_symbolite_name(obj: Value | str) -> str:
+    if isinstance(obj, str):
+        return obj
     try:
+        value = get_symbolite_info(obj).value
         return value.name
     except AttributeError:
-        raise TypeError(f"{obj} does not have name, it's value is a {type(value)}")
+        raise TypeError(f"{obj} does not have name, its value is a {type(obj)}")
