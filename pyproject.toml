@@ -128,9 +128,14 @@ remotify = { cmd = [
 [tool.pixi.feature.test.dependencies]
 pytest = "*"
 pooch = "*"
+networkx = "*"
+
+[tool.pixi.feature.test.pypi-dependencies]
+rebop = "*"
+
 
 [tool.pixi.feature.test.tasks]
-test = "pytest src/simbio/test_core.py src/simbio/reactions/test_reactions.py --doctest-modules"
+test = "pytest --doctest-modules"
 
 [tool.pixi.feature]
 py312.dependencies = { python = "3.12.*" }
