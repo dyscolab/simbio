@@ -1,12 +1,14 @@
-from collections.abc import Iterable, Callable, Mapping
+from collections.abc import Callable, Mapping
+from functools import partial
+from typing import Literal
 
-from poincare.reactions import RateLaw, Reactant
-from poincare.printing.latex import Latex, ToLatex, normalize_eq, default_sections
-from poincare.printing.latex import model_report as _model_report
-from symbolite.ops import translate, substitute
-from symbolite.impl import liblatex
 from poincare import System
-
+from poincare.printing.latex import Latex, ToLatex, default_sections, normalize_eq
+from poincare.printing.latex import model_report as _model_report
+from poincare.printing.notebook_display import Markdown, default_notebook_sections
+from poincare.printing.notebook_display import notebook_report as _notebook_report
+from poincare.reactions import RateLaw, Reactant
+from symbolite.ops import substitute
 
 
 def reaction_to_latex(reaction: RateLaw, latex: ToLatex) ->  Latex:
@@ -21,20 +23,29 @@ def reactant_to_latex(reactant: Reactant,latex: ToLatex) ->  Latex:
 
 
 def aligned_reactions(model: type[System], latex: ToLatex) -> Latex:
-    lines = []
-    lines.append("\\begin{aligned}")
-    lines.extend(reaction_to_latex(reaction=reaction, latex= latex) for reaction in model._yield(RateLaw))
+    lines = ["\\begin{aligned}"]
+    lines.extend(
+        reaction_to_latex(reaction=reaction, latex=latex) + "\\\\"
+        for reaction in model._yield(RateLaw)
+    )
     lines.append("\\end{aligned}")
-    return "\\\\\n".join(lines)
+    return "\n".join(lines)
 
 
 def latex_reactions(
-    model: type[System], transform: dict | None = None, latex: ToLatex | None = None
+    model: type[System],
+    transform: dict | None = None,
+    latex: ToLatex | None = None,
+    format: Literal["latex", "markdown"] = "latex",
 ) -> Latex:
     if latex is None:
         transform = transform if transform is not None else {}
         latex = ToLatex(model, transform=transform)
-    return "\\[ " + aligned_reactions(model = model, latex=latex) + " \\]"
+    aligned = aligned_reactions(model=model, latex=latex)
+    if format == "latex":
+        return "\\[ " + aligned + " \\]"
+    # Markdown renderers escape \[ \], so use $$ display math instead.
+    return "$$\n" + aligned + "\n$$"
 
 
 def model_report(
@@ -59,7 +70,24 @@ def model_report(
     )
 
 
-
-
-    
-
+def notebook_report(
+    model: type[System],
+    transform: dict | None = None,
+    descriptions: dict | None = None,
+    replace_algebraics: bool = False,
+    sections: Mapping[str, Callable[[type[System], ToLatex], Markdown]] = {
+        "Reactions": partial(latex_reactions, format="markdown")
+    }
+    | default_notebook_sections,
+    level: int = 2,
+    show: bool = True,
+) -> Markdown | None:
+    return _notebook_report(
+        model=model,
+        transform=transform,
+        descriptions=descriptions,
+        replace_algebraics=replace_algebraics,
+        sections=sections,
+        level=level,
+        show=show,
+    )

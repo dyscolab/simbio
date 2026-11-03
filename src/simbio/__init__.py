@@ -27,7 +27,7 @@ from .core import (
     volume,
 )
 
-from .latex import model_report
+from .latex import model_report, notebook_report
 
 __all__ = [
     "Constant",
@@ -54,4 +54,5 @@ __all__ += [
     "reaction_amount",
     "volume",
     "model_report",
+    "notebook_report",
 ]
